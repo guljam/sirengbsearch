@@ -54,9 +54,8 @@
 
     .itemLink {
       color: blue;
-      text-decoration: underline;
-      font-weight: 100;
-      font-size: 17px;
+      font-weight: bold;
+      font-size: 20px;
       cursor: pointer;
     }
 
@@ -92,6 +91,7 @@
     }
 
     #searchbox {
+      border: 1px solid #000000;
       height: auto;
       position: block;
       top: 0;
@@ -101,15 +101,9 @@
     }
 
     #search {
-      width: 400px;
+      width: 100%;
       height: 30px;
       font-size: 20px
-    }
-
-    #searchinfo {
-      margin-left: 10px;
-      font-size: 1.0em;
-      font-weight: 100;
     }
 
     #originallink {
@@ -119,6 +113,7 @@
     }
 
     #topbutton {
+      font-weight: bold;
       border: 1px solid blue;
       z-index: 1;
       background-color: #facd5c;
@@ -141,8 +136,11 @@
       text-align: center;
       font-weight: bold;
       border: 1px solid black;
-      background-color: #facd5c;
+      background-color: #fff9aa;
       font-size: 23px;
+    }
+    #searchtip{
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -154,16 +152,17 @@
         <div id="originallink">提供：<a href="https://gameboy123.web.fc2.com/sirengb1.top.html">「風来のシレンＧＢ 月影村の怪物」
             +GBCLOVER</a></div>
     </div>
-    <input type="text" id="search" name="myText">
-    <div id="searchinfo">
-      「数字入力」アイテムの価格を検索　/　「文字入力」アイテム・モンスターの名前を検索
-    </div>
+    <input type="text" id="search" name="myText" placeholder="「数字入力」アイテムの価格を検索　/　「文字入力」アイテム・モンスターの名前を検索">
+    <b id="searchtip">
+      ※キーを押して検索を始める<br>
+      ※検索結果が複数の場合、EnterまたはTabキーで次のキーワードに移動<br>
+      ※ESCキーで検索取り消し
+    </b>
     <div id="result">
     </div>
   </div>
   <p></p>
 
-  <b>※キーを押して検索を始める / EnterまたはTabキーで次のキーワードに移動<p></p></b>
   ※易…やさしい、普…ふつう、難…むずかしい、も…もっとむずかしい<br>
   ※○…フロアに落ちている　店…店で買える　◎…落ちているか店で売っている
   <div id="itemtitle">武器</div>

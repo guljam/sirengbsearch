@@ -1,24 +1,23 @@
-const log = console.log;
+const trace = console.log;
 const input = document.getElementById('search');
 const result = document.getElementById('result');
 const searchbox = document.getElementById('searchbox');
 const main = document.getElementById('main');
 const topbutton = document.getElementById('topbutton');
+const searchtip = document.getElementById('searchtip');
 const itemLinkList = [];
-let resultDelayTimer = null;
-let itemLinkIndexCount = 0;
-let itemLinkLastClicked = null;
-let itemNextIndex = 0;
 const ITEM_FOUND_COLOR = "#ffff88";
-let itemlistArr = {};
+let resultDelayTimer = null;
+let itemSearchNextIndex = 0;
+let itemListAll = {};
 
 function searchItemPrice(price) {
     price = price + "";
-    for (const type in itemlistArr) {
+    for (const type in itemListAll) {
         let tmpStr = "";
 
-        for (item in itemlistArr[type]) {
-            if (itemlistArr[type][item] === price) {
+        for (item in itemListAll[type]) {
+            if (itemListAll[type][item] === price) {
                 tmpStr += "" + item + " : " + price + "<br>";
             }
         }
@@ -63,20 +62,14 @@ function keydownGlobal(e) {
     }
     else if (itemLinkList.length > 0) {
         if (e.keyCode === 9 || e.keyCode === 13) {
-            autoscroll(itemLinkList[itemNextIndex]);
-            // focusTableBGOnly(itemLinkList[itemNextIndex].parentElement);
-            itemNextIndex++;
-            if (itemNextIndex >= itemLinkList.length) {
-                itemNextIndex = 0;
+            autoscroll(itemLinkList[itemSearchNextIndex]);
+            itemSearchNextIndex++;
+            if (itemSearchNextIndex >= itemLinkList.length) {
+                itemSearchNextIndex = 0;
             }
             e.preventDefault();
         }
     }
-}
-
-function inputInfoVisible(visible) {
-    const info = document.getElementById("searchinfo");
-    info.style.display = (visible === false) ? 'none' : 'inline';
 }
 
 function convertFullWidthNumberToString(fullWidthString) {
@@ -97,10 +90,9 @@ function inputEventInput(e) {
 }
 
 function _resetResult() {
-    itemLinkLastClicked = null;
     result.innerHTML = "";
     itemLinkList.length = 0;
-    itemNextIndex = 0;
+    itemSearchNextIndex = 0;
     resetTableFocusBG();
 }
 
@@ -112,21 +104,16 @@ function _search() {
         let str = convertFullWidthNumberToString(input.value);
 
         if (str === "") {
-            inputInfoVisible(true);
+            searchtip.style.display = 'block';
             return;
         }
+        searchtip.style.display = 'none';
 
-        inputInfoVisible(false);
-
-        const numberOnly = /^\d+$/.test(str);
-        if (numberOnly) {
-            const price = parseInt(str);
-            searchItemPrice(price);
+        if (/^\d+$/.test(str)) {
+            searchItemPrice(parseInt(str));
         }
         else {
-            itemLinkIndexCount = 0;
-            searchItemName(str, 0); // item
-            searchItemName(str, 1); // monster
+            searchItemName(str);
         }
     }, 200);
 }
@@ -142,6 +129,7 @@ function findTableParent(tdElement) {
 }
 
 function autoscroll(element) {
+    trace('autoscroll')
     const table = findTableParent(element);
     element.scrollIntoView(true);
     if (table) {
@@ -156,7 +144,6 @@ function clickEventItemLink(element) {
     const matches = element.id.match(/\d+/);
     if (matches) {
         const index = parseInt(matches[0], 10);
-        // focusTableBGOnly(itemLinkList[index].parentElement);
         autoscroll(itemLinkList[index]);
     }
 }
@@ -184,34 +171,40 @@ function resetTableFocusBG() {
     }
 }
 
-function searchItemName(str, searchType) {
-    const title = (searchType === 0) ? "アイテム" : "モンスター";
-    const list = (searchType === 0) ? document.querySelectorAll('.itemlist td[align="center"]')
-        : document.querySelectorAll('#monsters td[align="center"]')
-    let tempstr = "";
+function searchItemName(str) {
     str = wanakana.toKatakana(str);
 
-    var regex = new RegExp(str);
+    const items = {
+        "アイテム": '.itemlist td[align="center"]',
+        "モンスター": '#monsters td[align="center"]'
+    }
 
-    for (const ele in list) {
-        if (typeof (list[ele]) === "object") {
-            const innerText = wanakana.toKatakana(list[ele].innerText);
-            // if (innerText.substring(0, str.length) === str)
-            // if (innerText.indexOf(str) >= 0)
-            if (regex.test(innerText)) {
-                tempstr += "<span class=itemlink id='itemLink" + itemLinkIndexCount + "' onclick='clickEventItemLink(this)'>#" + ((searchType === 1) ? "[" + list[ele].previousElementSibling.innerText + "]" : "") + list[ele].innerText + "</span> ";
-                itemLinkList.push(list[ele]);
-                itemLinkIndexCount++;
-                focusTableBG(list[ele].parentElement);
+    for (const key in items) {
+        const list = document.querySelectorAll(items[key]);
+        let tempstr = "";
+
+        var regex = new RegExp(str);
+
+        for (const ele in list) {
+            if (typeof (list[ele]) === "object") {
+                const innerText = wanakana.toKatakana(list[ele].innerText);
+                if (regex.test(innerText)) {
+                    tempstr += "<span class=itemlink id='itemLink" + itemLinkList.length + "' onclick='clickEventItemLink(this)'>"
+                    + ((key === "アイテム") ? "#" : "[" + list[ele].previousElementSibling.innerText + "]")
+                    + list[ele].innerText + "</span> ";
+                    itemLinkList.push(list[ele]);
+                    focusTableBG(list[ele].parentElement);
+                }
             }
+        }
+
+        if (tempstr !== "") {
+            result.innerHTML += "<span class='resultTableHeader'>" + key + "：</span><br>" + tempstr + "<p></p>";
         }
     }
 
-    if (itemLinkIndexCount === 1) {
+    if (itemLinkList.length === 1) {
         autoscroll(itemLinkList[itemLinkList.length - 1]);
-    }
-    else if (tempstr !== "") {
-        result.innerHTML += "<span class='resultTableHeader'>" + title + "</span><br>" + tempstr + "<p></p>";
     }
 }
 
@@ -245,8 +238,8 @@ function initItemList() {
             }
         }
 
-        itemlistArr[typeArr1[i] + "(販売)"] = obj1;
-        itemlistArr[typeArr1[i] + "(買取)"] = obj2;
+        itemListAll[typeArr1[i] + "(販売)"] = obj1;
+        itemListAll[typeArr1[i] + "(買取)"] = obj2;
     }
 
     const typeArr2 = ["杖(販売)", "杖(買取)", "壺(販売)", "壺(買取)"];
@@ -273,13 +266,13 @@ function initItemList() {
             }
         }
 
-        if (typeArr2[i] in itemlistArr) {
+        if (typeArr2[i] in itemListAll) {
             for (const key in obj) {
-                itemlistArr[typeArr2[i]][key] = obj[key];
+                itemListAll[typeArr2[i]][key] = obj[key];
             }
         }
         else {
-            itemlistArr[typeArr2[i]] = obj;
+            itemListAll[typeArr2[i]] = obj;
         }
     }
 }
