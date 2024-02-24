@@ -59,6 +59,7 @@ function keydownGlobal(e) {
         input.value = "";
         _resetResult();
         searchtip.style.display = 'block';
+        window.scrollTo(0, 0);
     }
     else if (itemResultList.length > 0) {
         if (e.keyCode === 9 || e.keyCode === 13) {
