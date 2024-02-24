@@ -270,6 +270,8 @@ function _search() {
     if (result.innerHTML === "") {
         result.innerHTML = "<span class='resultTableHeader3'>(結果なし)</span>";
     }
+    
+    input.setSelectionRange(0, input.value.length);
 }
 
 function initItemList() {
