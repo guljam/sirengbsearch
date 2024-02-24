@@ -98,11 +98,26 @@
       margin-top: auto;
     }
 
+    #inputBox {
+      display: flex;
+      flex-direction: row;
+      height: 35px;
+      width: 310px;
+      margin-bottom: 15px;
+    }
+
+    #inputok {
+      /* width:310px; */
+      font-size: 20px;
+      flex: 1;
+      margin-left: 5px;
+    }
+
     #input {
-      min-width: 300px;
+      flex: 1;
+      min-width: 240px;
       height: 30px;
       font-size: 20px;
-      margin-bottom: 15px;
     }
 
     #originallink {
@@ -165,14 +180,17 @@
       <div id="originallink">データ参考:<a href="https://gameboy123.web.fc2.com/sirengb1.top.html">「風来のシレンＧＢ 月影村の怪物」
           +GBCLOVER</a></div>
     </div>
-    <input type="text" id="input" maxlength="50" placeholder="数字や文字を入力">
+    <div id="inputBox">
+      <input type="text" id="input" maxlength="50" placeholder="数字や文字を入力">
+      <br><button id="inputok">検索</button></br>
+    </div>
     <b id="searchtip">
       ※数字入力:アイテムの価格を検索<br>
       ※文字入力ア：アイテムとモンスターの名前を検索<br>
       ※(Any)キーを押して検索開始<br>
       ※単語に英語、カタカナ、ひらがな関係なく探す<br>
-      ※検索結果が複数の場合、EnterまたはTabキーで次のキーワードに移動<br>
-      ※ESCキーで検索を取り消し<p></p>
+      ※適当に入力しても探す（例）ごつぼ : <span style="color:red;">ご</span>うせいの<span style="color:red;">ツボ</span>、 #やりす<span style="color:red;">ご</span>しの<span style="color:red;">ツボ</span><br>
+      ※Enterキーで検索巡回, ESCキーで検索を取り消し<p></p>
       <a class="category scroll-link" href="#itemtitle1">#武器　</a>
       <a class="category scroll-link" href="#itemtitle2">#盾　</a>
       <a class="category scroll-link" href="#itemtitle3">#矢　</a>

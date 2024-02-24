@@ -7,12 +7,11 @@ const topbutton = document.getElementById('topbutton');
 const searchtip = document.getElementById('searchtip');
 const itemResultList = [];
 const ITEM_FOUND_COLOR = "#ffff88";
-let resultDelayTimer = null;
 let itemSearchNextIndex = 0;
 let itemListAll = {};
-let compositionStarted = false;
 let searchLastString = null;
 let autoscrollLastElement = null;
+let resultHistory = [];
 
 function checkTopButtonVisible()
 {
@@ -29,11 +28,15 @@ function scrollEventWindow(e) {
 }
 
 function goNextResult() {
-    addFocusBoldFont(itemResultList[itemSearchNextIndex]);
-    autoscroll(itemResultList[itemSearchNextIndex]);
-    itemSearchNextIndex++;
     if (itemSearchNextIndex >= itemResultList.length) {
         itemSearchNextIndex = 0;
+        window.scrollTo(0, 0);
+    }
+    else
+    {
+        addFocusBoldFont(itemResultList[itemSearchNextIndex]);
+        autoscroll(itemResultList[itemSearchNextIndex]);
+        itemSearchNextIndex++;
     }
 }
 
@@ -49,24 +52,48 @@ function keydownGlobal(e) {
         return;
     }
 
-    if (document.activeElement !== input) {
-        // _resetResult();
-        input.focus();
-    }
-
     //esc
     if (e.keyCode === 27) {
         input.value = "";
         _resetResult();
+        if (document.activeElement !== input) {
+            input.focus();
+        }
         searchtip.style.display = 'block';
         window.scrollTo(0, 0);
     }
-    else if (itemResultList.length > 0) {
-        if (e.keyCode === 9 || e.keyCode === 13) {
-            if (itemResultList.length > 0) {
-                goNextResult();
+    else if (e.keyCode === 13) //enter
+    {
+        if (input.value !== searchLastString)
+        {
+            _search();
+        }
+        else if(itemResultList.length > 0)
+        {
+            goNextResult();
+        }
+
+        e.preventDefault();
+    }
+    else if (e.keyCode === 9) //tab
+    {
+        if (itemResultList.length > 0) {
+             {
+                if (itemResultList.length > 0) {
+                    goNextResult();
+                }
             }
-            e.preventDefault();
+        }
+        e.preventDefault();
+    }
+
+    if((e.keyCode >= 48 && e.keyCode <= 57) || // 숫자 0-9
+    (e.keyCode >= 96 && e.keyCode <= 105) || //텐키
+    (e.keyCode >= 65 && e.keyCode <= 90) || // 대문자 A-Z
+    (e.keyCode >= 97 && e.keyCode <= 122))
+    {
+        if (document.activeElement !== input) {
+            input.focus();
         }
     }
 }
@@ -79,21 +106,14 @@ function convertFullWidthNumberToString(fullWidthString) {
     });
 }
 
+function pointerupEventInputok(e) {
+    if (input.value !== searchLastString)
+    {
+        _search();
+    }
+}
 function pointerDownTopbutton(e) {
     window.scrollTo(0, 0);
-}
-
-function compositionstartInput(e) {
-    compositionStarted = true;
-}
-
-function compositionendInput(e) {
-    compositionStarted = false;
-}
-
-function inputEventInput(e) {
-    window.scrollTo(0, 0);
-    _search();
 }
 
 function _resetResult() {
@@ -128,15 +148,8 @@ function removeFocusBoldFont() {
 }
 
 function autoscroll(element) {
-    const table = findTableParent(element);
-
     element.scrollIntoView(true);
-    if (table) {
-        window.scrollBy(0, -table.rows[0].clientHeight);
-    }
-    else {
-        window.scrollBy(0, -36);
-    }
+    window.scrollBy(0, -document.documentElement.clientHeight/4);
 }
 
 function clickEventItemlink(element) {
@@ -189,6 +202,19 @@ function searchItemPrice(price) {
     }
 }
 
+function makeSearchRegExp(str)
+{
+    const len = str.length;
+    let newstr = "";
+
+    for (let i = 0; i<len; i++)
+    {
+        newstr += str[i]+".*";
+    }
+
+    return newstr;
+}
+
 function searchItemName(str) {
     str = wanakana.toKatakana(str);
 
@@ -202,8 +228,7 @@ function searchItemName(str) {
     for (const key in items) {
         const list = document.querySelectorAll(items[key]);
         let tempstr = "";
-
-        var regex = new RegExp(str);
+        var regex = new RegExp(makeSearchRegExp(str));
 
         for (const ele in list) {
             if (typeof (list[ele]) === "object") {
@@ -225,30 +250,25 @@ function searchItemName(str) {
 }
 
 function _search() {
-    if (compositionStarted === false) {
-        _resetResult();
-        clearTimeout(resultDelayTimer);
-        resultDelayTimer = setTimeout(function () {
-            let str = convertFullWidthNumberToString(input.value);
-            searchLastString = str;
+    _resetResult();
+    let str = convertFullWidthNumberToString(input.value);
+    searchLastString = str;
 
-            if (str === "") {
-                searchtip.style.display = 'block';
-                return;
-            }
-            searchtip.style.display = 'none';
+    if (str === "") {
+        searchtip.style.display = 'block';
+        return;
+    }
+    searchtip.style.display = 'none';
 
-            if (/^\d+$/.test(str)) {
-                searchItemPrice(parseInt(str));
-            }
-            else {
-                searchItemName(str);
-            }
+    if (/^\d+$/.test(str)) {
+        searchItemPrice(parseInt(str));
+    }
+    else {
+        searchItemName(str);
+    }
 
-            if (result.innerHTML === "") {
-                result.innerHTML = "<span class='resultTableHeader3'>(結果なし)</span>";
-            }
-        }, 200);
+    if (result.innerHTML === "") {
+        result.innerHTML = "<span class='resultTableHeader3'>(結果なし)</span>";
     }
 }
 
@@ -322,13 +342,10 @@ function initItemList() {
 
 window.onload = function (e) {
     topbutton.addEventListener('pointerdown', pointerDownTopbutton);
-    input.addEventListener('input', inputEventInput);
-    input.addEventListener('compositionstart', compositionstartInput);
-    input.addEventListener('compositionend', compositionendInput);
-    topbutton.addEventListener('pointerdown', pointerDownTopbutton);
     document.addEventListener('keydown', keydownGlobal);
     window.addEventListener('resize', resizeEventWindow);
     window.addEventListener('scroll', scrollEventWindow);
+    document.getElementById('inputok').addEventListener('pointerup', pointerupEventInputok);
 
     //앵커 주소 표시 id가 주소로 바뀌는거 막기
     document.querySelectorAll('.scroll-link').forEach(anchor => {
