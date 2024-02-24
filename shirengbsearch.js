@@ -12,23 +12,7 @@ let itemSearchNextIndex = 0;
 let itemListAll = {};
 let compositionStarted = false;
 let searchLastString = null;
-
-function searchItemPrice(price) {
-    price = price + "";
-    for (const type in itemListAll) {
-        let tmpStr = "";
-
-        for (item in itemListAll[type]) {
-            if (itemListAll[type][item] === price) {
-                tmpStr += "" + item + " : " + price + "<br>";
-            }
-        }
-
-        if (tmpStr !== "") {
-            result.innerHTML += "<span class='resultTableHeader" + ((type.indexOf("買取") >= 0) ? "2" : "1") + "'>" + type + "</span>" + "<br>" + tmpStr + "<p></p>";
-        }
-    }
-}
+let autoscrollLastElement = null;
 
 function scrollEventWindow(e) {
     if (window.scrollY !== 0) {
@@ -40,6 +24,7 @@ function scrollEventWindow(e) {
 }
 
 function goNextResult() {
+    addFocusBoldFont(itemResultList[itemSearchNextIndex]);
     autoscroll(itemResultList[itemSearchNextIndex]);
     itemSearchNextIndex++;
     if (itemSearchNextIndex >= itemResultList.length) {
@@ -60,7 +45,7 @@ function keydownGlobal(e) {
     }
 
     if (document.activeElement !== input) {
-        _resetResult();
+        // _resetResult();
         input.focus();
     }
 
@@ -68,6 +53,7 @@ function keydownGlobal(e) {
     if (e.keyCode === 27) {
         input.value = "";
         _resetResult();
+        searchtip.style.display = 'block';
     }
     else if (itemResultList.length > 0) {
         if (e.keyCode === 9 || e.keyCode === 13) {
@@ -104,18 +90,135 @@ function inputEventInput(e) {
     _search();
 }
 
-function inputOKEvent(e) {
-    if (input.value !== searchLastString) {
-        window.scrollTo(0, 0);
-        _search();
-    }
-}
-
 function _resetResult() {
     result.innerHTML = "";
     itemResultList.length = 0;
     itemSearchNextIndex = 0;
     resetTableFocusBG();
+    removeFocusBoldFont();
+}
+
+function findTableParent(tdElement) {
+    let parent = tdElement.parentNode;
+
+    while (parent !== null && parent.tagName !== 'TABLE') {
+        parent = parent.parentNode;
+    }
+
+    return parent;
+}
+
+function addFocusBoldFont(element)
+{
+    removeFocusBoldFont();
+    const par = element.parentElement;
+    par.classList.add('itemfocusboldfont');
+    autoscrollLastElement = par;
+}
+
+function removeFocusBoldFont()
+{
+    if (autoscrollLastElement)
+    {
+        autoscrollLastElement.classList.remove('itemfocusboldfont');
+    }
+}
+
+function autoscroll(element) {
+    const table = findTableParent(element);
+
+    element.scrollIntoView(true);
+    if (table) {
+        window.scrollBy(0, -table.rows[0].clientHeight);
+    }
+    else {
+        window.scrollBy(0, -36);
+    }
+}
+
+function clickEventItemlink(element) {
+    const matches = element.id.match(/\d+/);
+    if (matches) {
+        const index = parseInt(matches[0], 10);
+
+        addFocusBoldFont(itemResultList[index]);
+        autoscroll(itemResultList[index]);
+    }
+}
+
+function focusTableBGOnly(element) {
+    resetTableFocusBG();
+    focusTableBG(element);
+}
+
+function focusTableBG(element) {
+    element.setAttribute('style', 'background-color:' + ITEM_FOUND_COLOR + ';');
+    const lvtd = element.querySelector("td");
+    if (lvtd.getAttribute('rowspan') !== null) {
+        lvtd.setAttribute('style', 'background-color:#fff;');
+    }
+}
+
+function resetTableFocusBG() {
+    const list = document.querySelectorAll('.itemname,.itemnamebuy,.itemnamesell,.monstername');
+
+    for (const ele in list) {
+        if (typeof (list[ele]) === "object" && list[ele].parentElement.hasAttribute('style')) {
+            list[ele].parentElement.removeAttribute('style');
+        }
+    }
+}
+
+function searchItemPrice(price) {
+    price = price + "";
+    for (const type in itemListAll) {
+        let tmpStr = "";
+
+        for (item in itemListAll[type]) {
+            if (itemListAll[type][item] === price) {
+                tmpStr += "" + item + " : " + price + "<br>";
+            }
+        }
+
+        if (tmpStr !== "") {
+            result.innerHTML += "<span class='itemfocusboldfont resultTableHeader" + ((type.indexOf("買取") >= 0) ? "2" : "1") + "'>" + type + "</span>" + "<br>" + tmpStr + "<p></p>";
+        }
+    }
+}
+
+function searchItemName(str) {
+    str = wanakana.toKatakana(str);
+
+    const items = {
+        "アイテム説明": '.itemname:not(.itembuy,.itemsell)',
+        "モンスター説明": '.monstername',
+        "販売価格": '.itembuy',
+        "買取価格": '.itemsell'
+    }
+
+    for (const key in items) {
+        const list = document.querySelectorAll(items[key]);
+        let tempstr = "";
+
+        var regex = new RegExp(str);
+
+        for (const ele in list) {
+            if (typeof (list[ele]) === "object") {
+                const innerText = wanakana.toKatakana(list[ele].innerText);
+                if (regex.test(innerText)) {
+                    tempstr += "<span class='itemlink' id='itemlink" + itemResultList.length + "' onclick='clickEventItemlink(this)'>"
+                        + ((key === "モンスター") ? "[" + list[ele].previousElementSibling.innerText + "]":"#")
+                        + list[ele].innerText + "</span> ";
+                    itemResultList.push(list[ele]);
+                    focusTableBG(list[ele].parentElement);
+                }
+            }
+        }
+
+        if (tempstr !== "") {
+            result.innerHTML += "<span class='resultTableHeader3'>" + key + "</span><br>" + tempstr + "<p></p>";
+        }
+    }
 }
 
 function _search() {
@@ -140,108 +243,19 @@ function _search() {
             }
 
             if (result.innerHTML === "") {
-                result.innerHTML = "<span class='resultTableHeader'>No data</span>";
+                result.innerHTML = "<span class='resultTableHeader3'>(結果なし)</span>";
             }
         }, 200);
-    }
-}
-
-function findTableParent(tdElement) {
-    let parent = tdElement.parentNode;
-
-    while (parent !== null && parent.tagName !== 'TABLE') {
-        parent = parent.parentNode;
-    }
-
-    return parent;
-}
-
-function autoscroll(element) {
-    const table = findTableParent(element);
-    element.scrollIntoView(true);
-    if (table) {
-        window.scrollBy(0, -table.rows[0].clientHeight);
-    }
-    else {
-        window.scrollBy(0, -36);
-    }
-}
-
-function clickEventItemLink(element) {
-    const matches = element.id.match(/\d+/);
-    if (matches) {
-        const index = parseInt(matches[0], 10);
-        autoscroll(itemResultList[index]);
-    }
-}
-
-function focusTableBGOnly(element) {
-    resetTableFocusBG();
-    focusTableBG(element);
-}
-
-function focusTableBG(element) {
-    element.setAttribute('style', 'background-color:' + ITEM_FOUND_COLOR + ';');
-    const lvtd = element.querySelector("td");
-    if (lvtd.getAttribute('rowspan') !== null) {
-        lvtd.setAttribute('style', 'background-color:#fff;');
-    }
-}
-
-function resetTableFocusBG() {
-    const list = document.querySelectorAll(".itemlist td[align='center'], #monsters td[align='center']");
-
-    for (const ele in list) {
-        if (typeof (list[ele]) === "object" && list[ele].parentElement.hasAttribute('style')) {
-            list[ele].parentElement.removeAttribute('style');
-        }
-    }
-}
-
-function searchItemName(str) {
-    str = wanakana.toKatakana(str);
-
-    const items = {
-        "アイテム": '.itemlist td[align="center"]',
-        "モンスター": '#monsters td[align="center"]'
-    }
-
-    for (const key in items) {
-        const list = document.querySelectorAll(items[key]);
-        let tempstr = "";
-
-        var regex = new RegExp(str);
-
-        for (const ele in list) {
-            if (typeof (list[ele]) === "object") {
-                const innerText = wanakana.toKatakana(list[ele].innerText);
-                if (regex.test(innerText)) {
-                    tempstr += "<span class=itemlink id='itemLink" + itemResultList.length + "' onclick='clickEventItemLink(this)'>"
-                        + ((key === "アイテム") ? "#" : "[" + list[ele].previousElementSibling.innerText + "]")
-                        + list[ele].innerText + "</span> ";
-                    itemResultList.push(list[ele]);
-                    focusTableBG(list[ele].parentElement);
-                }
-            }
-        }
-
-        if (tempstr !== "") {
-            result.innerHTML += "<span class='resultTableHeader'>" + key + "：</span><br>" + tempstr + "<p></p>";
-        }
-    }
-
-    if (itemResultList.length === 1) {
-        autoscroll(itemResultList[itemResultList.length - 1]);
     }
 }
 
 function initItemList() {
     const typeArr1 = [0, "武器", "盾", "矢", "壺", "草・種", "杖", "巻物", "食料", "腕輪"];
     for (let i = 1; i <= 9; i++) {
-        const list = document.querySelectorAll("#itemlist" + i + " " + "td[align='center']")
         const obj1 = {};
         const obj2 = {};
 
+        const list = document.querySelectorAll("#itemlist"+i+" .itemname");
         for (const ele in list) {
 
             const key = list[ele].innerText;
@@ -274,19 +288,18 @@ function initItemList() {
 
     for (let i = 0; i < 4; i++) {
         const obj = {};
-        const list = document.querySelectorAll("#" + listArr[i] + " td[align='center']");
-        const itemtypestring = (i < 2) ? "のつえ" : "のツボ";
+        const list = document.querySelectorAll("#" + listArr[i] + " .itemname");
 
         for (const ele in list) {
             if (typeof (list[ele]) === "object") {
                 const nextchild = list[ele].nextElementSibling;
                 if (nextchild.getAttribute('colspan') !== null) {
-                    obj[list[ele].innerText + itemtypestring + "[ALL]"] = nextchild.innerText;
+                    obj[list[ele].innerText + "[ALL]"] = nextchild.innerText;
                 }
                 else {
                     let nextnextChild = list[ele].nextElementSibling;
                     for (let i = 1; i <= 10; i++) {
-                        obj[list[ele].innerText + itemtypestring + "[" + i + "]"] = nextnextChild.innerText;
+                        obj[list[ele].innerText + "[" + i + "]"] = nextnextChild.innerText;
                         nextnextChild = nextnextChild.nextElementSibling;
                     }
                 }
@@ -309,8 +322,6 @@ window.onload = function (e) {
     input.addEventListener('input', inputEventInput);
     input.addEventListener('compositionstart', compositionstartInput);
     input.addEventListener('compositionend', compositionendInput);
-    document.getElementById('inputOK').addEventListener('click', inputOKEvent);
-    document.getElementById('inputOK').addEventListener('touchstart', inputOKEvent);
     document.addEventListener('keydown', keydownGlobal);
     topbutton.addEventListener('pointerdown', pointerDownTopbutton);
     window.addEventListener('resize', resizeEventWindow);

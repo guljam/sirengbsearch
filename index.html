@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,11 +39,6 @@
       top: 0;
     }
 
-    span {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
     .mergetd {
       text-align: center;
     }
@@ -51,15 +47,17 @@
       color: red;
     }
 
-    .itemLink {
+    .itemlink {
       color: blue;
       font-weight: bold;
       font-size: 1.1em;
       cursor: pointer;
     }
 
-    .resultContent {
-      font-size: 20px;
+    .resultTableHeader3 {
+      color: #000000;
+      font-size: 23px;
+      font-weight: bold;
     }
 
     .resultTableHeader2 {
@@ -75,7 +73,6 @@
     }
 
     #result {
-      margin-top: 10px;
       font-size: 20px;
     }
 
@@ -101,20 +98,16 @@
       margin-top: auto;
     }
 
-    #inputOK {
-      font-size: 20px;
-      width: 70px;
-    }
-
     #input {
       min-width: 400px;
       height: 30px;
       font-size: 20px;
+      margin-bottom: 15px;
     }
 
     #originallink {
       display: inline-block;
-      font-size: 14px;
+      font-size: 15px;
       margin-top: 20px;
     }
 
@@ -139,7 +132,7 @@
       justify-content: space-between;
     }
 
-    #itemtitle {
+    .itemtitle {
       text-align: center;
       font-weight: bold;
       border: 1px solid black;
@@ -147,8 +140,19 @@
       font-size: 23px;
     }
 
-    #searchtip {
-      margin-top: 5px;
+    .itemname,
+    .monstername {
+      text-align: center;
+    }
+
+    .itemfocusboldfont {
+      font-weight: bold;
+    }
+    .category{
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      color:blue;
     }
   </style>
 </head>
@@ -160,16 +164,28 @@
       <div id="originallink">データ参考:<a href="https://gameboy123.web.fc2.com/sirengb1.top.html">「風来のシレンＧＢ 月影村の怪物」
           +GBCLOVER</a></div>
     </div>
-    <input type="text" id="input" name="myText">
-    <button id="inputOK">OK</button>
+    <input type="text" id="input">
     <b id="searchtip">
       ※数字入力:アイテムの価格を検索<br>
       ※文字入力ア：アイテムとモンスターの名前を検索<br>
-      ※キーを押して検索開始<br>
+      ※(Any)キーを押して検索開始<br>
+      ※単語に英語、カタカナ、ひらがな関係なく探す<br>
       ※検索結果が複数の場合、EnterまたはTabキーで次のキーワードに移動<br>
-      ※ESCキーで検索取り消し
+      ※ESCキーで検索取り消し<br>
+      <a class="category" href="#itemtitle1">#武器　</a>
+      <a class="category" href="#itemtitle2">#盾　</a>
+      <a class="category" href="#itemtitle3">#矢　</a>
+      <a class="category" href="#itemtitle4">#壺　</a>
+      <a class="category" href="#itemtitle5">#草・種　</a>
+      <a class="category" href="#itemtitle6">#杖　</a>
+      <a class="category" href="#itemtitle7">#巻物　</a>
+      <a class="category" href="#itemtitle8">#食料　</a>
+      <a class="category" href="#itemtitle9">#腕輪　</a>
+      <a class="category" href="#itemtitle10">#モンスター　</a>
+      <a class="category" href="#itemtitle12">#壺の販売/買取価格表　</a>
+      <a class="category" href="#itemtitle11">#杖の販売/買取価格表　</a>
+      <div id="result">
     </b>
-    <div id="result">
     </div>
   </div>
   <p></p>
@@ -178,7 +194,7 @@
     ※易…やさしい、普…ふつう、難…むずかしい、も…もっとむずかしい<br>
     ※○…フロアに落ちている　店…店で買える　◎…落ちているか店で売っている
   </b>
-  <div id="itemtitle">武器</div>
+  <div class="itemtitle" id="itemtitle1">武器</div>
   <table class="itemlist" id="itemlist1">
     <tbody>
       <tr>
@@ -193,7 +209,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">こんぼう</td>
+        <td class='itemname'>こんぼう</td>
         <td>2</td>
         <td>240</td>
         <td>80</td>
@@ -204,7 +220,7 @@
         <td width="1%">○</td>
       </tr>
       <tr>
-        <td align="center">ながまき</td>
+        <td class='itemname'>ながまき</td>
         <td>4</td>
         <td>500</td>
         <td>200</td>
@@ -215,7 +231,7 @@
         <td width="1%">◎</td>
       </tr>
       <tr>
-        <td align="center">カタナ</td>
+        <td class='itemname'>カタナ</td>
         <td>6</td>
         <td>800</td>
         <td>300</td>
@@ -226,7 +242,7 @@
         <td width="1%">◎</td>
       </tr>
       <tr>
-        <td align="center">どうたぬき</td>
+        <td class='itemname'>どうたぬき</td>
         <td>8</td>
         <td>1500</td>
         <td>700</td>
@@ -237,7 +253,7 @@
         <td width="1%">◎</td>
       </tr>
       <tr>
-        <td align="center">つるはし</td>
+        <td class='itemname'>つるはし</td>
         <td>5</td>
         <td>260</td>
         <td>100</td>
@@ -248,7 +264,7 @@
         <td width="1%">○</td>
       </tr>
       <tr>
-        <td align="center">ひとつめゴロシ</td>
+        <td class='itemname'>ひとつめゴロシ</td>
         <td>5</td>
         <td>3300</td>
         <td>1130</td>
@@ -259,7 +275,7 @@
         <td width="1%">◎</td>
       </tr>
       <tr>
-        <td align="center">ドレインバスター</td>
+        <td class='itemname'>ドレインバスター</td>
         <td>5</td>
         <td>4000</td>
         <td>2000</td>
@@ -270,7 +286,7 @@
         <td width="1%">◎</td>
       </tr>
       <tr>
-        <td align="center">ドラゴンキラー</td>
+        <td class='itemname'>ドラゴンキラー</td>
         <td>7</td>
         <td>4500</td>
         <td>2200</td>
@@ -281,7 +297,7 @@
         <td width="1%">店</td>
       </tr>
       <tr>
-        <td align="center">ヨウトウかまいたち</td>
+        <td class='itemname'>ヨウトウかまいたち</td>
         <td>3</td>
         <td>5300</td>
         <td>2600</td>
@@ -292,7 +308,7 @@
         <td width="1%">店</td>
       </tr>
       <tr>
-        <td align="center">ミノタウロスのおの</td>
+        <td class='itemname'>ミノタウロスのおの</td>
         <td>4</td>
         <td>6000</td>
         <td>2700</td>
@@ -303,7 +319,7 @@
         <td width="1%">　</td>
       </tr>
       <tr>
-        <td align="center">じょうぶつのカマ</td>
+        <td class='itemname'>じょうぶつのカマ</td>
         <td>2</td>
         <td>8000</td>
         <td>3250</td>
@@ -314,7 +330,7 @@
         <td width="1%">店</td>
       </tr>
       <tr>
-        <td align="center">ひっちゅうのけん</td>
+        <td class='itemname'>ひっちゅうのけん</td>
         <td>2</td>
         <td>10000</td>
         <td>4500</td>
@@ -325,7 +341,7 @@
         <td width="1%">店</td>
       </tr>
       <tr>
-        <td align="center">マンジカブラ</td>
+        <td class='itemname'>マンジカブラ</td>
         <td>12</td>
         <td>15000</td>
         <td>7000</td>
@@ -336,7 +352,7 @@
         <td width="1%">　</td>
       </tr>
       <tr>
-        <td align="center">かじんフウマとう</td>
+        <td class='itemname'>かじんフウマとう</td>
         <td>30</td>
         <td>30000</td>
         <td>12500</td>
@@ -347,7 +363,7 @@
         <td width="1%">　</td>
       </tr>
       <tr>
-        <td align="center">ひけんカブラステギ</td>
+        <td class='itemname'>ひけんカブラステギ</td>
         <td>50</td>
         <td>40000</td>
         <td>17500</td>
@@ -358,7 +374,7 @@
         <td width="1%">　</td>
       </tr>
       <tr>
-        <td align="center">マムルのけん</td>
+        <td class='itemname'>マムルのけん</td>
         <td>5</td>
         <td>10000</td>
         <td>5000</td>
@@ -372,7 +388,7 @@
   </table>
   <p></p>
 
-  <div id="itemtitle">盾</div>
+  <div class="itemtitle" id="itemtitle2">盾</div>
   <table class="itemlist" id="itemlist2">
     <tbody>
       <tr>
@@ -387,7 +403,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">かわのたて</td>
+        <td class='itemname'>かわのたて</td>
         <td>2</td>
         <td>1000</td>
         <td>350</td>
@@ -398,7 +414,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">もっこうのたて</td>
+        <td class='itemname'>もっこうのたて</td>
         <td>3</td>
         <td>600</td>
         <td>200</td>
@@ -409,7 +425,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">せいどうこうのたて</td>
+        <td class='itemname'>せいどうこうのたて</td>
         <td>4</td>
         <td>300</td>
         <td>100</td>
@@ -420,7 +436,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">てっこうのたて</td>
+        <td class='itemname'>てっこうのたて</td>
         <td>7</td>
         <td>1800</td>
         <td>750</td>
@@ -431,7 +447,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">ヒャッキのたて</td>
+        <td class='itemname'>ヒャッキのたて</td>
         <td>9</td>
         <td>2500</td>
         <td>1250</td>
@@ -442,7 +458,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">じゅうそうのたて</td>
+        <td class='itemname'>じゅうそうのたて</td>
         <td>12</td>
         <td>4000</td>
         <td>1000</td>
@@ -453,7 +469,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">トドのたて</td>
+        <td class='itemname'>トドのたて</td>
         <td>3</td>
         <td>2000</td>
         <td>800</td>
@@ -464,7 +480,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">じらいナバリのたて</td>
+        <td class='itemname'>じらいナバリのたて</td>
         <td>3</td>
         <td>4000</td>
         <td>1500</td>
@@ -475,7 +491,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">つかいすてのたて</td>
+        <td class='itemname'>つかいすてのたて</td>
         <td>30</td>
         <td>4500</td>
         <td>1200</td>
@@ -486,7 +502,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ドラゴンシールド</td>
+        <td class='itemname'>ドラゴンシールド</td>
         <td>7</td>
         <td>5000</td>
         <td>2500</td>
@@ -497,7 +513,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">バトルカウンター</td>
+        <td class='itemname'>バトルカウンター</td>
         <td>5</td>
         <td>5000</td>
         <td>2500</td>
@@ -508,7 +524,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">みきりのたて</td>
+        <td class='itemname'>みきりのたて</td>
         <td>5</td>
         <td>8000</td>
         <td>3000</td>
@@ -519,7 +535,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">やまびこのたて</td>
+        <td class='itemname'>やまびこのたて</td>
         <td>5</td>
         <td>12000</td>
         <td>6000</td>
@@ -530,7 +546,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">フウマのたて</td>
+        <td class='itemname'>フウマのたて</td>
         <td>15</td>
         <td>7500</td>
         <td>2500</td>
@@ -541,7 +557,7 @@
         <td>　</td>
       </tr>
       <tr>
-        <td align="center">らせんフウマのたて</td>
+        <td class='itemname'>らせんフウマのたて</td>
         <td>30</td>
         <td>50000</td>
         <td>22500</td>
@@ -552,7 +568,7 @@
         <td>　</td>
       </tr>
       <tr>
-        <td align="center">マムルのたて</td>
+        <td class='itemname'>マムルのたて</td>
         <td>6</td>
         <td>10000</td>
         <td>5000</td>
@@ -566,7 +582,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">矢</div>
+  <div class="itemtitle" id="itemtitle3">矢</div>
   <table class="itemlist" id="itemlist3">
     <tbody>
       <tr>
@@ -580,7 +596,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">きのや</td>
+        <td class='itemname'>きのや</td>
         <td>10</td>
         <td>2</td>
         <td>普通の矢</td>
@@ -590,7 +606,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">てつのや</td>
+        <td class='itemname'>てつのや</td>
         <td>40</td>
         <td>10</td>
         <td>最も強力な矢</td>
@@ -600,7 +616,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">ぎんのや</td>
+        <td class='itemname'>ぎんのや</td>
         <td>80　　</td>
         <td>20　　</td>
         <td>貫通して飛び複数の敵を倒せるが、必ずあたるわけではない</td>
@@ -613,7 +629,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">壺</div>
+  <div class="itemtitle" id="itemtitle4">壺</div>
   <table class="itemlist" id="itemlist4">
     <tbody>
       <tr>
@@ -627,7 +643,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">きょうかのツボ</td>
+        <td class='itemname'>きょうかのツボ</td>
         <td>10000</td>
         <td>5000</td>
         <td>中の剣・盾・杖が階段を下りるごとに強くなる</td>
@@ -637,7 +653,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">ごうせいのツボ</td>
+        <td class='itemname'>ごうせいのツボ</td>
         <td>3000</td>
         <td>1500</td>
         <td>入れたアイテムを合成できる</td>
@@ -647,7 +663,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">しきべつのツボ</td>
+        <td class='itemname'>しきべつのツボ</td>
         <td>1000</td>
         <td>500</td>
         <td>入れたアイテムを識別できる</td>
@@ -657,7 +673,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">じゃくかのツボ</td>
+        <td class='itemname'>じゃくかのツボ</td>
         <td>1000</td>
         <td>200</td>
         <td>中の剣・盾・杖が階段を下りるごとに弱化する</td>
@@ -667,7 +683,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">せなかのツボ</td>
+        <td class='itemname'>せなかのツボ</td>
         <td>1650</td>
         <td>700</td>
         <td>押すと体力全快＆異常回復</td>
@@ -677,7 +693,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">そうこのツボ</td>
+        <td class='itemname'>そうこのツボ</td>
         <td>2500</td>
         <td>1200</td>
         <td>入れたアイテムを倉庫に送る</td>
@@ -687,7 +703,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">そこぬけのツボ</td>
+        <td class='itemname'>そこぬけのツボ</td>
         <td>2500</td>
         <td>400</td>
         <td>入れたアイテムが消える、割ると落とし穴出現</td>
@@ -697,7 +713,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">トドのツボ</td>
+        <td class='itemname'>トドのツボ</td>
         <td>1600</td>
         <td>600</td>
         <td>押すと直線状の壷以外のアイテムを取ることができる、割るとトドが出現</td>
@@ -707,7 +723,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">ぶんれつのツボ</td>
+        <td class='itemname'>ぶんれつのツボ</td>
         <td>8000</td>
         <td>4000</td>
         <td>入れたアイテムが２つになる</td>
@@ -717,7 +733,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">へんげのツボ</td>
+        <td class='itemname'>へんげのツボ</td>
         <td>1100</td>
         <td>500</td>
         <td>入れたアイテムが別のものになる</td>
@@ -727,7 +743,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ほぞんのツボ</td>
+        <td class='itemname'>ほぞんのツボ</td>
         <td>1600</td>
         <td>800</td>
         <td>アイテムを出し入れできる</td>
@@ -737,7 +753,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">まもののルツボ</td>
+        <td class='itemname'>まもののルツボ</td>
         <td>1900</td>
         <td>300</td>
         <td>モンスターが容量の数だけ出てくる</td>
@@ -747,7 +763,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">やりすごしのツボ</td>
+        <td class='itemname'>やりすごしのツボ</td>
         <td>1000</td>
         <td>400</td>
         <td>しばらく敵から隠れることができる、敵を閉じ込めることもできる</td>
@@ -760,7 +776,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">草・種</div>
+  <div class="itemtitle" id="itemtitle5">草・種</div>
   <table class="itemlist" id="itemlist5">
     <tbody>
       <tr>
@@ -774,7 +790,7 @@
         <th width="1%" align="center" class="sticky">も</th>
       </tr>
       <tr>
-        <td align="center">いかくちょうのたね</td>
+        <td class='itemname'>いかくちょうのたね</td>
         <td>1000</td>
         <td>500</td>
         <td>最大満腹度が１０上がる</td>
@@ -784,7 +800,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">いしゅくしょうのたね</td>
+        <td class='itemname'>いしゅくしょうのたね</td>
         <td>200</td>
         <td>60</td>
         <td>最大満腹度が１０下がる</td>
@@ -794,7 +810,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">いのちのくさ</td>
+        <td class='itemname'>いのちのくさ</td>
         <td>500</td>
         <td>200</td>
         <td>ＨＰの最大値が５上がる</td>
@@ -804,7 +820,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">おとぎりそう</td>
+        <td class='itemname'>おとぎりそう</td>
         <td>100</td>
         <td>50</td>
         <td>ＨＰが１００回復する、ＨＰがマックスのときに飲むと最大ＨＰが２上がる</td>
@@ -814,7 +830,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">クネクネそう</td>
+        <td class='itemname'>クネクネそう</td>
         <td>200</td>
         <td>50</td>
         <td>レベルが１下がる</td>
@@ -824,7 +840,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">こんらんそう</td>
+        <td class='itemname'>こんらんそう</td>
         <td>500</td>
         <td>200</td>
         <td>混乱する</td>
@@ -834,7 +850,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ざっそう</td>
+        <td class='itemname'>ざっそう</td>
         <td>200</td>
         <td>60</td>
         <td>効果なし</td>
@@ -844,7 +860,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">しあわせそう</td>
+        <td class='itemname'>しあわせそう</td>
         <td>1000</td>
         <td>500</td>
         <td>レベルが１上がる</td>
@@ -854,7 +870,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">すいみんそう</td>
+        <td class='itemname'>すいみんそう</td>
         <td>750</td>
         <td>300</td>
         <td>眠りにつく</td>
@@ -864,7 +880,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">すばやさのたね</td>
+        <td class='itemname'>すばやさのたね</td>
         <td>750</td>
         <td>350</td>
         <td>２倍速になる</td>
@@ -874,7 +890,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">たかとびそう</td>
+        <td class='itemname'>たかとびそう</td>
         <td>300</td>
         <td>70</td>
         <td>ワープする</td>
@@ -884,7 +900,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ちからのたね</td>
+        <td class='itemname'>ちからのたね</td>
         <td>500</td>
         <td>250</td>
         <td>ちからが1、最大値が1上がる</td>
@@ -894,7 +910,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ちょうふこうのたね</td>
+        <td class='itemname'>ちょうふこうのたね</td>
         <td>200</td>
         <td>30</td>
         <td>レベル、HPが1になる</td>
@@ -904,7 +920,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">てんしのたね</td>
+        <td class='itemname'>てんしのたね</td>
         <td>10000</td>
         <td>1500</td>
         <td>レベルが5上がる</td>
@@ -914,7 +930,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">どくけしそう</td>
+        <td class='itemname'>どくけしそう</td>
         <td>650</td>
         <td>250</td>
         <td>ちからを回復</td>
@@ -924,7 +940,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">どくそう</td>
+        <td class='itemname'>どくそう</td>
         <td>50</td>
         <td>25</td>
         <td>ちからとＨＰが下がり、速度が２分の１になる</td>
@@ -934,7 +950,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ドラゴンそう</td>
+        <td class='itemname'>ドラゴンそう</td>
         <td>500</td>
         <td>200</td>
         <td>炎を吐いて攻撃</td>
@@ -944,7 +960,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ふこうのたね</td>
+        <td class='itemname'>ふこうのたね</td>
         <td>200</td>
         <td>40</td>
         <td>レベルが３下がる</td>
@@ -954,7 +970,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">ふっかつのくさ</td>
+        <td class='itemname'>ふっかつのくさ</td>
         <td>5000</td>
         <td>2500</td>
         <td>持っていると死んでも復活する</td>
@@ -964,7 +980,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">むてきそう</td>
+        <td class='itemname'>むてきそう</td>
         <td>3000</td>
         <td>100</td>
         <td>２０ターンの間、無敵になる</td>
@@ -974,7 +990,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">めぐすりそう</td>
+        <td class='itemname'>めぐすりそう</td>
         <td>50</td>
         <td>25</td>
         <td>罠が見えるようになる</td>
@@ -984,7 +1000,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">やくそう</td>
+        <td class='itemname'>やくそう</td>
         <td>50</td>
         <td>25</td>
         <td>ＨＰが２５回復する、ＨＰがマックスのときに飲むと最大ＨＰが１上がる</td>
@@ -996,7 +1012,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">杖</div>
+  <div class="itemtitle" id="itemtitle6">杖</div>
   <table class="itemlist" id="itemlist6">
     <tbody>
       <tr>
@@ -1010,7 +1026,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">いたみわけのつえ</td>
+        <td class='itemname'>いたみわけのつえ</td>
         <td>1000</td>
         <td>350</td>
         <td>敵とダメージを分けあう</td>
@@ -1020,7 +1036,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">いちじしのぎのつえ</td>
+        <td class='itemname'>いちじしのぎのつえ</td>
         <td>700</td>
         <td>350</td>
         <td>階段の上に飛ばし、金縛りに</td>
@@ -1030,7 +1046,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">かなしばりのつえ</td>
+        <td class='itemname'>かなしばりのつえ</td>
         <td>700</td>
         <td>350</td>
         <td>金縛りにする</td>
@@ -1040,7 +1056,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">しあわせのつえ</td>
+        <td class='itemname'>しあわせのつえ</td>
         <td>800</td>
         <td>400</td>
         <td>レベルを１上げる</td>
@@ -1050,7 +1066,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ばしょがえのつえ</td>
+        <td class='itemname'>ばしょがえのつえ</td>
         <td>600</td>
         <td>300</td>
         <td>位置が入れ替わる</td>
@@ -1060,7 +1076,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ふういんのつえ</td>
+        <td class='itemname'>ふういんのつえ</td>
         <td>1000</td>
         <td>500</td>
         <td>特殊能力を封印する</td>
@@ -1070,7 +1086,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ふきとばしのつえ</td>
+        <td class='itemname'>ふきとばしのつえ</td>
         <td>600</td>
         <td>300</td>
         <td>吹き飛ばし、５ダメージを与える</td>
@@ -1080,7 +1096,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ふこうのつえ</td>
+        <td class='itemname'>ふこうのつえ</td>
         <td>800</td>
         <td>400</td>
         <td>レベルを１下げる</td>
@@ -1090,7 +1106,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">まどうのつえ</td>
+        <td class='itemname'>まどうのつえ</td>
         <td>500</td>
         <td>250</td>
         <td>ランダムで効果がある</td>
@@ -1100,7 +1116,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">みがわりのつえ</td>
+        <td class='itemname'>みがわりのつえ</td>
         <td>1000</td>
         <td>500</td>
         <td>混乱させ、身代わりにする</td>
@@ -1113,7 +1129,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">巻物</div>
+  <div class="itemtitle" id="itemtitle7">巻物</div>
   <table class="itemlist" id="itemlist7">
     <tbody>
       <tr>
@@ -1127,7 +1143,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">あかりのまきもの</td>
+        <td class='itemname'>あかりのまきもの</td>
         <td>300</td>
         <td>150</td>
         <td>マップや敵、アイテムが見えるようになる</td>
@@ -1137,7 +1153,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">おおべやのまきもの</td>
+        <td class='itemname'>おおべやのまきもの</td>
         <td>400</td>
         <td>200</td>
         <td>その階を1つの大部屋にする</td>
@@ -1147,7 +1163,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">おはらいのまきもの</td>
+        <td class='itemname'>おはらいのまきもの</td>
         <td>500</td>
         <td>250</td>
         <td>呪いを解く</td>
@@ -1157,7 +1173,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">くちなしのまきもの</td>
+        <td class='itemname'>くちなしのまきもの</td>
         <td>500</td>
         <td>250</td>
         <td>口が使えなくなる</td>
@@ -1167,7 +1183,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">こまったときのまきもの</td>
+        <td class='itemname'>こまったときのまきもの</td>
         <td>1000</td>
         <td>250</td>
         <td>状況に応じて助けてくれる</td>
@@ -1177,7 +1193,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">こんらんのまきもの</td>
+        <td class='itemname'>こんらんのまきもの</td>
         <td>100</td>
         <td>50</td>
         <td>周囲の敵が混乱する</td>
@@ -1187,7 +1203,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">ジェノサイドのまきもの</td>
+        <td class='itemname'>ジェノサイドのまきもの</td>
         <td>5000</td>
         <td>750</td>
         <td>投げ当てた敵の存在を封じる</td>
@@ -1197,7 +1213,7 @@
         <td>　</td>
       </tr>
       <tr>
-        <td align="center">しきべつのまきもの</td>
+        <td class='itemname'>しきべつのまきもの</td>
         <td>300</td>
         <td>150</td>
         <td>アイテムを識別できる</td>
@@ -1207,7 +1223,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">じばくのまきもの</td>
+        <td class='itemname'>じばくのまきもの</td>
         <td>500</td>
         <td>100</td>
         <td>大爆発を起こす、ＨＰが１になる</td>
@@ -1217,7 +1233,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">しんくうぎりのまきもの</td>
+        <td class='itemname'>しんくうぎりのまきもの</td>
         <td>1000</td>
         <td>500</td>
         <td>周囲の敵にダメージ</td>
@@ -1227,7 +1243,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">すいだしのまきもの</td>
+        <td class='itemname'>すいだしのまきもの</td>
         <td>1500</td>
         <td>750</td>
         <td>壺の中身を取り出す</td>
@@ -1237,7 +1253,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">ちのめぐみのまきもの</td>
+        <td class='itemname'>ちのめぐみのまきもの</td>
         <td>800</td>
         <td>400</td>
         <td>盾の強さを１上げる</td>
@@ -1247,7 +1263,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">つぼぞうだいのまきもの</td>
+        <td class='itemname'>つぼぞうだいのまきもの</td>
         <td>1000</td>
         <td>500</td>
         <td>壺の容量が１増える</td>
@@ -1257,7 +1273,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">てきばいそくのまきもの</td>
+        <td class='itemname'>てきばいそくのまきもの</td>
         <td>100</td>
         <td>50</td>
         <td>敵の速度が２倍になる</td>
@@ -1267,7 +1283,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">てんのめぐみのまきもの</td>
+        <td class='itemname'>てんのめぐみのまきもの</td>
         <td>800</td>
         <td>400</td>
         <td>剣の強さを１上げる</td>
@@ -1277,7 +1293,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">バクスイのまきもの</td>
+        <td class='itemname'>バクスイのまきもの</td>
         <td>200</td>
         <td>100</td>
         <td>敵を眠らせる</td>
@@ -1287,7 +1303,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">パワーアップのまきもの</td>
+        <td class='itemname'>パワーアップのまきもの</td>
         <td>1000</td>
         <td>100</td>
         <td>攻撃力が１．５倍になる</td>
@@ -1297,7 +1313,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">ひきあげのまきもの</td>
+        <td class='itemname'>ひきあげのまきもの</td>
         <td>1000</td>
         <td>500</td>
         <td>装備品とともに月影村に戻る</td>
@@ -1307,7 +1323,7 @@
         <td>　</td>
       </tr>
       <tr>
-        <td align="center">ひろえずのまきもの</td>
+        <td class='itemname'>ひろえずのまきもの</td>
         <td>300</td>
         <td>300</td>
         <td>アイテムが拾えなくなる</td>
@@ -1317,7 +1333,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">まいごのまきもの</td>
+        <td class='itemname'>まいごのまきもの</td>
         <td>200</td>
         <td>100</td>
         <td>憶えたマップを忘れてしまう</td>
@@ -1327,7 +1343,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">メッキのまきもの</td>
+        <td class='itemname'>メッキのまきもの</td>
         <td>1500</td>
         <td>500</td>
         <td>剣と盾をメッキする</td>
@@ -1337,7 +1353,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">モンスターハウスのまきもの</td>
+        <td class='itemname'>モンスターハウスのまきもの</td>
         <td>80</td>
         <td>40</td>
         <td nowrap="">部屋がモンスターハウスになる</td>
@@ -1350,7 +1366,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">食料</div>
+  <div class="itemtitle" id="itemtitle8">食料</div>
   <table class="itemlist" id="itemlist8">
     <tbody>
       <tr>
@@ -1364,7 +1380,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">おにぎり</td>
+        <td class='itemname'>おにぎり</td>
         <td>100</td>
         <td>25</td>
         <td>満腹度が５０%プラスになる</td>
@@ -1374,7 +1390,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">おおきいおにぎり</td>
+        <td class='itemname'>おおきいおにぎり</td>
         <td>200</td>
         <td>50</td>
         <td>満腹度が１００%プラスになる</td>
@@ -1384,7 +1400,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">きょだいなおにぎり</td>
+        <td class='itemname'>きょだいなおにぎり</td>
         <td>300</td>
         <td>75</td>
         <td>満腹になり、最大満腹度が５%上がる</td>
@@ -1394,7 +1410,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">くさったおにぎり</td>
+        <td class='itemname'>くさったおにぎり</td>
         <td>100</td>
         <td>25</td>
         <td>満腹度が３０%プラス、弊害あり</td>
@@ -1404,7 +1420,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">たまご</td>
+        <td class='itemname'>たまご</td>
         <td>50</td>
         <td>10</td>
         <td>満腹度が３０%、他にも特殊効果がつく</td>
@@ -1417,7 +1433,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">腕輪</div>
+  <div class="itemtitle" id="itemtitle9">腕輪</div>
   <table class="itemlist" id="itemlist9">
     <tbody>
       <tr>
@@ -1431,7 +1447,7 @@
         <th class="sticky" width="1%" align="center">も</th>
       </tr>
       <tr>
-        <td align="center">えんとうのうでわ</td>
+        <td class='itemname'>えんとうのうでわ</td>
         <td>1200</td>
         <td>600</td>
         <td>アイテムを投げると貫通して飛んでいく</td>
@@ -1441,7 +1457,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">かいしんのうでわ</td>
+        <td class='itemname'>かいしんのうでわ</td>
         <td>10000</td>
         <td>5000</td>
         <td>会心の一撃がでる</td>
@@ -1451,7 +1467,7 @@
         <td></td>
       </tr>
       <tr>
-        <td align="center">かいふくのうでわ</td>
+        <td class='itemname'>かいふくのうでわ</td>
         <td>5000</td>
         <td>2500</td>
         <td>HPが５ずつ回復する、ハラヘリは2倍になる</td>
@@ -1461,7 +1477,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">こんらんよけのうでわ</td>
+        <td class='itemname'>こんらんよけのうでわ</td>
         <td>2400</td>
         <td>1200</td>
         <td>混乱しなくなる</td>
@@ -1471,7 +1487,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">サビよけのうでわ</td>
+        <td class='itemname'>サビよけのうでわ</td>
         <td>2400</td>
         <td>1200</td>
         <td>装備が錆びない</td>
@@ -1481,7 +1497,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">しあわせのうでわ</td>
+        <td class='itemname'>しあわせのうでわ</td>
         <td>10000</td>
         <td>5000</td>
         <td>もらえる経験値が少し増える</td>
@@ -1491,7 +1507,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">しきべつのうでわ</td>
+        <td class='itemname'>しきべつのうでわ</td>
         <td>30000</td>
         <td>15000</td>
         <td>アイテムを拾っただけで識別できる</td>
@@ -1501,7 +1517,7 @@
         <td>店</td>
       </tr>
       <tr>
-        <td align="center">たれながしのうでわ</td>
+        <td class='itemname'>たれながしのうでわ</td>
         <td>3600</td>
         <td>1800</td>
         <td>歩いているとアイテムをランダムに落としてしまう</td>
@@ -1511,7 +1527,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">つうかのうでわ</td>
+        <td class='itemname'>つうかのうでわ</td>
         <td>2400</td>
         <td>1200</td>
         <td>障害物や水脈の上を歩ける</td>
@@ -1521,7 +1537,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">つうこんのうでわ</td>
+        <td class='itemname'>つうこんのうでわ</td>
         <td>10000</td>
         <td>5000</td>
         <td>痛恨の一撃を受けやすくなる</td>
@@ -1531,7 +1547,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">とうしのうでわ</td>
+        <td class='itemname'>とうしのうでわ</td>
         <td>3600</td>
         <td>1800</td>
         <td>敵やアイテムの位置がわかる</td>
@@ -1541,7 +1557,7 @@
         <td>◎</td>
       </tr>
       <tr>
-        <td align="center">ねぎりのうでわ</td>
+        <td class='itemname'>ねぎりのうでわ</td>
         <td>10000</td>
         <td>5000</td>
         <td>買物時に店主に「いいえ」と答えると、半額に値切ることができる</td>
@@ -1551,7 +1567,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">のろいよけのうでわ</td>
+        <td class='itemname'>のろいよけのうでわ</td>
         <td>2400</td>
         <td>1200</td>
         <td>呪い攻撃を防ぐ</td>
@@ -1561,7 +1577,7 @@
         <td>○</td>
       </tr>
       <tr>
-        <td align="center">ハラヘラズのうでわ</td>
+        <td class='itemname'>ハラヘラズのうでわ</td>
         <td>15000</td>
         <td>5000</td>
         <td>満腹度が減らなくなる</td>
@@ -1571,7 +1587,7 @@
         <td>　</td>
       </tr>
       <tr>
-        <td align="center">ハラヘリのうでわ</td>
+        <td class='itemname'>ハラヘリのうでわ</td>
         <td>15000</td>
         <td>5000</td>
         <td>満腹度の減り方ががいつもの2倍</td>
@@ -1584,14 +1600,15 @@
     </tbody>
   </table>
   <p></p>
+  <div class="itemtitle" id="itemtitle10">モンスター</div>
   <b>
+    <br>
     ※目…ひとつめゴロシが効く。<br>
     ※霊…じょうぶつのカマが効く。<br>
     ※吸…ドレインバスターが効く。<br>
     ※盗…トドのたてで特殊攻撃を防げる。<br>
     ※魔…やまびこのたてで特殊攻撃を防げる。<p></p>
   </b>
-  <div id="itemtitle">モンスター</div>
   <table id="monsters">
     <tbody>
       <tr>
@@ -1605,7 +1622,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td width="20%" align="center">アイアンヘッド</td>
+        <td width="20%" class='monstername'>アイアンヘッド</td>
         <td>目</td>
         <td>60</td>
         <td>400</td>
@@ -1613,7 +1630,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">チェインヘッド</td>
+        <td class='monstername'>チェインヘッド</td>
         <td>目</td>
         <td>70</td>
         <td>1200</td>
@@ -1621,7 +1638,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">ギガヘッド</td>
+        <td class='monstername'>ギガヘッド</td>
         <td>目</td>
         <td>100</td>
         <td>2000</td>
@@ -1630,7 +1647,7 @@
       <tr>
         <td>ＬＶ</td>
         <td>１</td>
-        <td align="center">いやしウサギ</td>
+        <td class='monstername'>いやしウサギ</td>
         <td>－</td>
         <td>20</td>
         <td>90</td>
@@ -1640,7 +1657,7 @@
       <tr>
         <td>ＬＶ</td>
         <td>１</td>
-        <td align="center">エーテルもどき</td>
+        <td class='monstername'>エーテルもどき</td>
         <td>霊</td>
         <td>50</td>
         <td>80</td>
@@ -1650,7 +1667,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">おばけだいこん</td>
+        <td class='monstername'>おばけだいこん</td>
         <td>霊</td>
         <td>20</td>
         <td>20</td>
@@ -1658,7 +1675,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">めまわしだいこん</td>
+        <td class='monstername'>めまわしだいこん</td>
         <td>霊</td>
         <td>50</td>
         <td>65</td>
@@ -1667,7 +1684,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">ねむりだいこん</td>
+        <td class='monstername'>ねむりだいこん</td>
         <td>霊</td>
         <td>50</td>
         <td>120</td>
@@ -1677,7 +1694,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">かさタヌキ</td>
+        <td class='monstername'>かさタヌキ</td>
         <td>－</td>
         <td>10</td>
         <td>6</td>
@@ -1686,7 +1703,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">からかさタヌキ</td>
+        <td class='monstername'>からかさタヌキ</td>
         <td>－</td>
         <td>10</td>
         <td>60</td>
@@ -1694,7 +1711,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">たんたんタヌキ</td>
+        <td class='monstername'>たんたんタヌキ</td>
         <td>－</td>
         <td>10</td>
         <td>600</td>
@@ -1703,7 +1720,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">かっとびイノシシ</td>
+        <td class='monstername'>かっとびイノシシ</td>
         <td>－</td>
         <td>20</td>
         <td>18</td>
@@ -1712,7 +1729,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">げきとつシシ</td>
+        <td class='monstername'>げきとつシシ</td>
         <td>－</td>
         <td>60</td>
         <td>350</td>
@@ -1720,7 +1737,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">かいめつイノシシ</td>
+        <td class='monstername'>かいめつイノシシ</td>
         <td>－</td>
         <td>80</td>
         <td>1500</td>
@@ -1729,7 +1746,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">ガマラ</td>
+        <td class='monstername'>ガマラ</td>
         <td>盗</td>
         <td>14</td>
         <td>5</td>
@@ -1739,7 +1756,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">ガマグッチ</td>
+        <td class='monstername'>ガマグッチ</td>
         <td>盗</td>
         <td>30</td>
         <td>50</td>
@@ -1747,7 +1764,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">ガマゴン</td>
+        <td class='monstername'>ガマゴン</td>
         <td>盗</td>
         <td>50</td>
         <td>400</td>
@@ -1756,7 +1773,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">カラカイおさる</td>
+        <td class='monstername'>カラカイおさる</td>
         <td>－</td>
         <td>6</td>
         <td>3</td>
@@ -1764,7 +1781,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">チャカシおさる</td>
+        <td class='monstername'>チャカシおさる</td>
         <td>－</td>
         <td>6</td>
         <td>3</td>
@@ -1772,7 +1789,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">ミクダシおさる</td>
+        <td class='monstername'>ミクダシおさる</td>
         <td>－</td>
         <td>50</td>
         <td>170</td>
@@ -1781,7 +1798,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">カラスてんぐ</td>
+        <td class='monstername'>カラスてんぐ</td>
         <td>－</td>
         <td>10</td>
         <td>25</td>
@@ -1790,7 +1807,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">ハヤブサてんぐ</td>
+        <td class='monstername'>ハヤブサてんぐ</td>
         <td>－</td>
         <td>10</td>
         <td>100</td>
@@ -1799,7 +1816,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">イヌワシてんぐ</td>
+        <td class='monstername'>イヌワシてんぐ</td>
         <td>－</td>
         <td>60</td>
         <td>300</td>
@@ -1809,7 +1826,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">きめんむしゃ</td>
+        <td class='monstername'>きめんむしゃ</td>
         <td>－</td>
         <td>36</td>
         <td>40</td>
@@ -1817,7 +1834,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">はんにゃむしゃ</td>
+        <td class='monstername'>はんにゃむしゃ</td>
         <td>－</td>
         <td>40</td>
         <td>50</td>
@@ -1825,7 +1842,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">しょうぐん</td>
+        <td class='monstername'>しょうぐん</td>
         <td>－</td>
         <td>55</td>
         <td>500</td>
@@ -1834,7 +1851,7 @@
       <tr>
         <td>ＬＶ</td>
         <td>１</td>
-        <td align="center">ぼうれいむしゃ</td>
+        <td class='monstername'>ぼうれいむしゃ</td>
         <td>霊</td>
         <td>4</td>
         <td>10</td>
@@ -1844,7 +1861,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">ギャザー</td>
+        <td class='monstername'>ギャザー</td>
         <td>－</td>
         <td>35</td>
         <td>50</td>
@@ -1852,7 +1869,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">キラーギャザー</td>
+        <td class='monstername'>キラーギャザー</td>
         <td>－</td>
         <td>60</td>
         <td>600</td>
@@ -1860,7 +1877,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">ヘルギャザー</td>
+        <td class='monstername'>ヘルギャザー</td>
         <td>－</td>
         <td>63</td>
         <td>1600</td>
@@ -1869,7 +1886,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">きりせんにん</td>
+        <td class='monstername'>きりせんにん</td>
         <td>魔</td>
         <td>40</td>
         <td>100</td>
@@ -1878,7 +1895,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">みのせんにん</td>
+        <td class='monstername'>みのせんにん</td>
         <td>魔</td>
         <td>65</td>
         <td>540</td>
@@ -1887,7 +1904,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">かすみせんにん</td>
+        <td class='monstername'>かすみせんにん</td>
         <td>魔</td>
         <td>90</td>
         <td>1000</td>
@@ -1897,7 +1914,7 @@
       <tr>
         <td>ＬＶ</td>
         <td>１</td>
-        <td align="center">くねくねハニー</td>
+        <td class='monstername'>くねくねハニー</td>
         <td>吸</td>
         <td>40</td>
         <td>30</td>
@@ -1906,7 +1923,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">ゲイズ</td>
+        <td class='monstername'>ゲイズ</td>
         <td>目<br>
           魔</td>
         <td>50</td>
@@ -1915,7 +1932,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">スーパーゲイズ</td>
+        <td class='monstername'>スーパーゲイズ</td>
         <td>目<br>
           魔</td>
         <td>60</td>
@@ -1924,7 +1941,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">ハイパーゲイズ</td>
+        <td class='monstername'>ハイパーゲイズ</td>
         <td>目<br>
           魔</td>
         <td>75</td>
@@ -1934,7 +1951,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">しのつかい</td>
+        <td class='monstername'>しのつかい</td>
         <td>霊</td>
         <td>60</td>
         <td>300</td>
@@ -1942,7 +1959,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">じごくのししゃ</td>
+        <td class='monstername'>じごくのししゃ</td>
         <td>霊</td>
         <td>60</td>
         <td>400</td>
@@ -1950,7 +1967,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">しにがみ</td>
+        <td class='monstername'>しにがみ</td>
         <td>霊</td>
         <td>70</td>
         <td>1150</td>
@@ -1959,7 +1976,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">シューベル</td>
+        <td class='monstername'>シューベル</td>
         <td>－</td>
         <td>28</td>
         <td>25</td>
@@ -1967,7 +1984,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">メンベルス</td>
+        <td class='monstername'>メンベルス</td>
         <td>－</td>
         <td>40</td>
         <td>300</td>
@@ -1975,7 +1992,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">ベルトーベン</td>
+        <td class='monstername'>ベルトーベン</td>
         <td>－</td>
         <td>70</td>
         <td>1000</td>
@@ -1984,7 +2001,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">すすりムシ</td>
+        <td class='monstername'>すすりムシ</td>
         <td>目<br>
           吸</td>
         <td>30</td>
@@ -1993,7 +2010,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">きゅういんちゅう</td>
+        <td class='monstername'>きゅういんちゅう</td>
         <td>目<br>
           吸</td>
         <td>55</td>
@@ -2002,7 +2019,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">がぶのみムシ</td>
+        <td class='monstername'>がぶのみムシ</td>
         <td>目<br>
           吸</td>
         <td>55</td>
@@ -2012,7 +2029,7 @@
       <tr>
         <td rowspan="3">ＬＶ</td>
         <td>１</td>
-        <td align="center">セルアーマー</td>
+        <td class='monstername'>セルアーマー</td>
         <td>霊</td>
         <td>35</td>
         <td>45</td>
@@ -2020,7 +2037,7 @@
       </tr>
       <tr>
         <td>２</td>
-        <td align="center">クロムアーマー</td>
+        <td class='monstername'>クロムアーマー</td>
         <td>霊</td>
         <td>50</td>
         <td>450</td>
@@ -2028,7 +2045,7 @@
       </tr>
       <tr>
         <td>３</td>
-        <td align="center">チタンアーマー</td>
+        <td class='monstername'>チタンアーマー</td>
         <td>霊</td>
         <td>80</td>
         <td>1200</td>
@@ -2036,7 +2053,7 @@
       </tr>
       <td rowspan="3" width="20">ＬＶ</td>
       <td width="4">1</td>
-      <td width="20%" align="center">タウロス</td>
+      <td width="20%" class='monstername'>タウロス</td>
       <td>－</td>
       <td>55</td>
       <td>350</td>
@@ -2045,7 +2062,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ミノタウロス</td>
+        <td class='monstername'>ミノタウロス</td>
         <td>－</td>
         <td>67</td>
         <td>800</td>
@@ -2053,7 +2070,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">メガタウロス</td>
+        <td class='monstername'>メガタウロス</td>
         <td>－</td>
         <td>100</td>
         <td>1200</td>
@@ -2062,7 +2079,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">チキン</td>
+        <td class='monstername'>チキン</td>
         <td>－</td>
         <td>4</td>
         <td>100</td>
@@ -2070,7 +2087,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">マスターチキン</td>
+        <td class='monstername'>マスターチキン</td>
         <td>－</td>
         <td>55</td>
         <td>270</td>
@@ -2078,7 +2095,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">グレードチキン</td>
+        <td class='monstername'>グレードチキン</td>
         <td>－</td>
         <td>70</td>
         <td>1000</td>
@@ -2087,7 +2104,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ちょうちんフグ</td>
+        <td class='monstername'>ちょうちんフグ</td>
         <td>吸</td>
         <td>15</td>
         <td>35</td>
@@ -2096,7 +2113,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">あんどんフグ</td>
+        <td class='monstername'>あんどんフグ</td>
         <td>吸</td>
         <td>55</td>
         <td>400</td>
@@ -2105,7 +2122,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">かんてらフグ</td>
+        <td class='monstername'>かんてらフグ</td>
         <td>吸</td>
         <td>80</td>
         <td>600</td>
@@ -2115,7 +2132,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">チンタラ</td>
+        <td class='monstername'>チンタラ</td>
         <td>－</td>
         <td>6</td>
         <td>4</td>
@@ -2123,7 +2140,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ちゅうチンタラ</td>
+        <td class='monstername'>ちゅうチンタラ</td>
         <td>－</td>
         <td>30</td>
         <td>25</td>
@@ -2131,7 +2148,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">おおチンタラ</td>
+        <td class='monstername'>おおチンタラ</td>
         <td>－</td>
         <td>50</td>
         <td>150</td>
@@ -2140,7 +2157,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">デブータ</td>
+        <td class='monstername'>デブータ</td>
         <td>－</td>
         <td>15</td>
         <td>10</td>
@@ -2149,7 +2166,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">デブーチョ</td>
+        <td class='monstername'>デブーチョ</td>
         <td>－</td>
         <td>50</td>
         <td>200</td>
@@ -2158,7 +2175,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">デブートン</td>
+        <td class='monstername'>デブートン</td>
         <td>－</td>
         <td>70</td>
         <td>1000</td>
@@ -2168,7 +2185,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">とおせんりゅう</td>
+        <td class='monstername'>とおせんりゅう</td>
         <td>竜</td>
         <td>40</td>
         <td>55</td>
@@ -2176,7 +2193,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ドラゴンヘッド</td>
+        <td class='monstername'>ドラゴンヘッド</td>
         <td>竜</td>
         <td>45</td>
         <td>200</td>
@@ -2184,7 +2201,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">スルードラゴン</td>
+        <td class='monstername'>スルードラゴン</td>
         <td>竜</td>
         <td>80</td>
         <td>1200</td>
@@ -2193,7 +2210,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">にぎりへんげ</td>
+        <td class='monstername'>にぎりへんげ</td>
         <td>－</td>
         <td>30</td>
         <td>20</td>
@@ -2202,7 +2219,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">にぎりおやかた</td>
+        <td class='monstername'>にぎりおやかた</td>
         <td>－</td>
         <td>60</td>
         <td>75</td>
@@ -2210,7 +2227,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">にぎりもとじめ</td>
+        <td class='monstername'>にぎりもとじめ</td>
         <td>－</td>
         <td>50</td>
         <td>200</td>
@@ -2219,7 +2236,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">にらみヘビ</td>
+        <td class='monstername'>にらみヘビ</td>
         <td>竜</td>
         <td>30</td>
         <td>40</td>
@@ -2227,7 +2244,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ぎょろつきヘビ</td>
+        <td class='monstername'>ぎょろつきヘビ</td>
         <td>竜</td>
         <td>80</td>
         <td>1000</td>
@@ -2235,7 +2252,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">がんだれヘビ</td>
+        <td class='monstername'>がんだれヘビ</td>
         <td>竜</td>
         <td>85</td>
         <td>1500</td>
@@ -2244,7 +2261,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ぬすっトド</td>
+        <td class='monstername'>ぬすっトド</td>
         <td>盗</td>
         <td>25</td>
         <td>10</td>
@@ -2254,7 +2271,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">みどりトド</td>
+        <td class='monstername'>みどりトド</td>
         <td>盗</td>
         <td>40</td>
         <td>100</td>
@@ -2262,7 +2279,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">アイアントド</td>
+        <td class='monstername'>アイアントド</td>
         <td>盗</td>
         <td>70</td>
         <td>250</td>
@@ -2271,7 +2288,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ネズミこぶん</td>
+        <td class='monstername'>ネズミこぶん</td>
         <td>－</td>
         <td>6</td>
         <td>3</td>
@@ -2279,7 +2296,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ネズミおやぶん</td>
+        <td class='monstername'>ネズミおやぶん</td>
         <td>－</td>
         <td>6</td>
         <td>3</td>
@@ -2287,7 +2304,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">ネズミくろまく</td>
+        <td class='monstername'>ネズミくろまく</td>
         <td>－</td>
         <td>36</td>
         <td>40</td>
@@ -2296,7 +2313,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ノロージョ</td>
+        <td class='monstername'>ノロージョ</td>
         <td>－</td>
         <td>33</td>
         <td>35</td>
@@ -2304,7 +2321,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ノロージョのあね</td>
+        <td class='monstername'>ノロージョのあね</td>
         <td>－</td>
         <td>65</td>
         <td>100</td>
@@ -2312,7 +2329,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">ノロージョのはは</td>
+        <td class='monstername'>ノロージョのはは</td>
         <td>－</td>
         <td>75</td>
         <td>500</td>
@@ -2321,7 +2338,7 @@
       <tr>
         <td>ＬＶ</td>
         <td>1</td>
-        <td align="center">ばくだんウニ</td>
+        <td class='monstername'>ばくだんウニ</td>
         <td>目</td>
         <td>60</td>
         <td>50</td>
@@ -2331,7 +2348,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">パコレプキン</td>
+        <td class='monstername'>パコレプキン</td>
         <td>霊</td>
         <td>30</td>
         <td>35</td>
@@ -2340,7 +2357,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">パコレプキーナ</td>
+        <td class='monstername'>パコレプキーナ</td>
         <td>霊</td>
         <td>60</td>
         <td>500</td>
@@ -2348,7 +2365,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">パコレプキング</td>
+        <td class='monstername'>パコレプキング</td>
         <td>霊</td>
         <td>65</td>
         <td>1500</td>
@@ -2357,7 +2374,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ぴーたん</td>
+        <td class='monstername'>ぴーたん</td>
         <td>目</td>
         <td>5</td>
         <td>7</td>
@@ -2365,7 +2382,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">にげぴーたん</td>
+        <td class='monstername'>にげぴーたん</td>
         <td>目</td>
         <td>5</td>
         <td>25</td>
@@ -2374,7 +2391,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">とびぴーたん</td>
+        <td class='monstername'>とびぴーたん</td>
         <td>目</td>
         <td>10</td>
         <td>40</td>
@@ -2384,7 +2401,7 @@
       <tr>
         <td rowspan="7">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ボウヤー</td>
+        <td class='monstername'>ボウヤー</td>
         <td>－</td>
         <td>7</td>
         <td>7</td>
@@ -2392,7 +2409,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">クロスボウヤー</td>
+        <td class='monstername'>クロスボウヤー</td>
         <td>－</td>
         <td>20</td>
         <td>20</td>
@@ -2400,7 +2417,7 @@
       </tr>
       <tr>
         <td width="4">1</td>
-        <td align="center">コドモせんしゃ</td>
+        <td class='monstername'>コドモせんしゃ</td>
         <td>－</td>
         <td>25</td>
         <td>40</td>
@@ -2409,7 +2426,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ちびタンク</td>
+        <td class='monstername'>ちびタンク</td>
         <td>－</td>
         <td>25</td>
         <td>135</td>
@@ -2418,7 +2435,7 @@
       </tr>
       <tr>
         <td width="4">1</td>
-        <td align="center">オヤジせんしゃ</td>
+        <td class='monstername'>オヤジせんしゃ</td>
         <td>－</td>
         <td>22</td>
         <td>25</td>
@@ -2427,7 +2444,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ガンコせんしゃ</td>
+        <td class='monstername'>ガンコせんしゃ</td>
         <td>－</td>
         <td>40</td>
         <td>300</td>
@@ -2435,7 +2452,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">イッテツせんしゃ</td>
+        <td class='monstername'>イッテツせんしゃ</td>
         <td>－</td>
         <td>65</td>
         <td>450</td>
@@ -2445,7 +2462,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">マムル</td>
+        <td class='monstername'>マムル</td>
         <td>－</td>
         <td>5</td>
         <td>2</td>
@@ -2453,7 +2470,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">あなぐらマムル</td>
+        <td class='monstername'>あなぐらマムル</td>
         <td>－</td>
         <td>6</td>
         <td>4</td>
@@ -2461,7 +2478,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">どうくつマムル</td>
+        <td class='monstername'>どうくつマムル</td>
         <td>－</td>
         <td>5</td>
         <td>1000</td>
@@ -2470,7 +2487,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ミドロ</td>
+        <td class='monstername'>ミドロ</td>
         <td>吸</td>
         <td>40</td>
         <td>20</td>
@@ -2478,7 +2495,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ゲドロ</td>
+        <td class='monstername'>ゲドロ</td>
         <td>吸</td>
         <td>55</td>
         <td>50</td>
@@ -2487,7 +2504,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">オドロ</td>
+        <td class='monstername'>オドロ</td>
         <td>吸</td>
         <td>80</td>
         <td>200</td>
@@ -2497,7 +2514,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">モラビー</td>
+        <td class='monstername'>モラビー</td>
         <td>－</td>
         <td>8</td>
         <td>8</td>
@@ -2505,7 +2522,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">ワラビー</td>
+        <td class='monstername'>ワラビー</td>
         <td>－</td>
         <td>9</td>
         <td>9</td>
@@ -2513,7 +2530,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">タカビー</td>
+        <td class='monstername'>タカビー</td>
         <td>－</td>
         <td>50</td>
         <td>80</td>
@@ -2522,7 +2539,7 @@
       <tr>
         <td rowspan="3" width="20">ＬＶ</td>
         <td width="4">1</td>
-        <td align="center">ヤミウッチー</td>
+        <td class='monstername'>ヤミウッチー</td>
         <td>－</td>
         <td>15</td>
         <td>15</td>
@@ -2530,7 +2547,7 @@
       </tr>
       <tr>
         <td width="4">2</td>
-        <td align="center">フイウッチー</td>
+        <td class='monstername'>フイウッチー</td>
         <td>－</td>
         <td>65</td>
         <td>600</td>
@@ -2538,7 +2555,7 @@
       </tr>
       <tr>
         <td width="4">3</td>
-        <td align="center">ダマシウッチー</td>
+        <td class='monstername'>ダマシウッチー</td>
         <td>－</td>
         <td>72</td>
         <td>1350</td>
@@ -2547,7 +2564,7 @@
       <tr>
         <td>ＬＶ</td>
         <td>1</td>
-        <td align="center">オロチ（量産型）</td>
+        <td class='monstername'>オロチ（量産型）</td>
         <td>竜</td>
         <td>150</td>
         <td>2500</td>
@@ -2557,7 +2574,7 @@
       <tr>
         <td>ＬＶ</td>
         <td>1</td>
-        <td align="center">オロチ（ラスボス）</td>
+        <td class='monstername'>オロチ（ラスボス）</td>
         <td>竜</td>
         <td>220</td>
         <td>0</td>
@@ -2567,7 +2584,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">杖の販売価格表</div>
+  <div class="itemtitle" id="itemtitle11">杖の販売価格表</div>
   <table>
     <tbody id="tue1">
       <tr>
@@ -2584,7 +2601,7 @@
         <th class="sticky" align="center">１０</th>
       </tr>
       <tr>
-        <td align="center">いたみわけ</td>
+        <td class='itemname itembuy'>いたみわけのつえ</td>
         <td>1100</td>
         <td>1200</td>
         <td>1300</td>
@@ -2597,7 +2614,7 @@
         <td>2000</td>
       </tr>
       <tr>
-        <td align="center">いちじしのぎ</td>
+        <td class='itemname itembuy'>いちじしのぎのつえ</td>
         <td>750</td>
         <td>800</td>
         <td>850</td>
@@ -2610,7 +2627,7 @@
         <td>1200</td>
       </tr>
       <tr>
-        <td align="center">かなしばり</td>
+        <td class='itemname itembuy'>かなしばりのつえ</td>
         <td>750</td>
         <td>800</td>
         <td>850</td>
@@ -2623,7 +2640,7 @@
         <td>1200</td>
       </tr>
       <tr>
-        <td align="center">ばしょがえ</td>
+        <td class='itemname itembuy'>ばしょがえのつえ</td>
         <td>650</td>
         <td>700</td>
         <td>750</td>
@@ -2636,7 +2653,7 @@
         <td>1100</td>
       </tr>
       <tr>
-        <td align="center">ふきとばし</td>
+        <td class='itemname itembuy'>ふきとばしのつえ</td>
         <td>650</td>
         <td>700</td>
         <td>750</td>
@@ -2649,7 +2666,7 @@
         <td>1100</td>
       </tr>
       <tr>
-        <td align="center">ふういん</td>
+        <td class='itemname itembuy'>ふういんのつえ</td>
         <td>1150</td>
         <td>1300</td>
         <td>1450</td>
@@ -2662,7 +2679,7 @@
         <td>2500</td>
       </tr>
       <tr>
-        <td align="center">みがわり</td>
+        <td class='itemname itembuy'>みがわりのつえ</td>
         <td>1080</td>
         <td>1160</td>
         <td>1240</td>
@@ -2675,11 +2692,11 @@
         <td>1800</td>
       </tr>
       <tr>
-        <td align="center">まどう</td>
+        <td class='itemname itembuy'>まどうのつえ</td>
         <td class="mergetd" colspan="10">500</td>
       </tr>
       <tr>
-        <td align="center">しあわせ</td>
+        <td class='itemname itembuy'>しあわせのつえ</td>
         <td>840</td>
         <td>880</td>
         <td>920</td>
@@ -2692,7 +2709,7 @@
         <td>1200</td>
       </tr>
       <tr>
-        <td align="center">ふこう</td>
+        <td class='itemname itembuy'>ふこうのつえ</td>
         <td>840</td>
         <td>880</td>
         <td>920</td>
@@ -2707,7 +2724,7 @@
 
     </tbody>
   </table>
-  <div id="itemtitle">杖の買取価格表</div>
+  <div class="itemtitle">杖の買取価格表</div>
   <table>
     <tbody id="tue2">
       <tr>
@@ -2724,7 +2741,7 @@
         <th class="sticky" align="center">１０</th>
       </tr>
       <tr>
-        <td align="center">いたみわけ</td>
+        <td class='itemname itemsell'>いたみわけのつえ</td>
         <td>400</td>
         <td>450</td>
         <td>500</td>
@@ -2737,7 +2754,7 @@
         <td>850</td>
       </tr>
       <tr>
-        <td align="center">いちじしのぎ</td>
+        <td class='itemname itemsell'>いちじしのぎのつえ</td>
         <td>375</td>
         <td>400</td>
         <td>425</td>
@@ -2750,7 +2767,7 @@
         <td>600</td>
       </tr>
       <tr>
-        <td align="center">かなしばり</td>
+        <td class='itemname itemsell'>かなしばりのつえ</td>
         <td>375</td>
         <td>400</td>
         <td>425</td>
@@ -2763,7 +2780,7 @@
         <td>600</td>
       </tr>
       <tr>
-        <td align="center">ばしょがえ</td>
+        <td class='itemname itemsell'>ばしょがえのつえ</td>
         <td>325</td>
         <td>350</td>
         <td>375</td>
@@ -2776,7 +2793,7 @@
         <td>550</td>
       </tr>
       <tr>
-        <td align="center">ふきとばし</td>
+        <td class='itemname itemsell'>ふきとばしのつえ</td>
         <td>325</td>
         <td>350</td>
         <td>375</td>
@@ -2789,7 +2806,7 @@
         <td>550</td>
       </tr>
       <tr>
-        <td align="center">ふういん</td>
+        <td class='itemname itemsell'>ふういんのつえ</td>
         <td>570</td>
         <td>640</td>
         <td>710</td>
@@ -2802,7 +2819,7 @@
         <td>1200</td>
       </tr>
       <tr>
-        <td align="center">みがわり</td>
+        <td class='itemname itemsell'>みがわりのつえ</td>
         <td>540</td>
         <td>580</td>
         <td>620</td>
@@ -2815,11 +2832,11 @@
         <td>900</td>
       </tr>
       <tr>
-        <td align="center">まどう</td>
+        <td class='itemname itemsell'>まどうのつえ</td>
         <td colspan="10" class="mergetd">250</td>
       </tr>
       <tr>
-        <td align="center">しあわせ</td>
+        <td class='itemname itemsell'>しあわせのつえ</td>
         <td>420</td>
         <td>440</td>
         <td>460</td>
@@ -2832,7 +2849,7 @@
         <td>600</td>
       </tr>
       <tr>
-        <td align="center">ふこう</td>
+        <td class='itemname itemsell'>ふこうのつえ</td>
         <td>420</td>
         <td>440</td>
         <td>460</td>
@@ -2847,7 +2864,7 @@
     </tbody>
   </table>
   <p></p>
-  <div id="itemtitle">壺の販売価格表</div>
+  <div class="itemtitle" id="itemtitle12">壺の販売価格表</div>
   <table>
     <tbody id="tubo1">
       <tr>
@@ -2864,15 +2881,15 @@
         <th class="sticky" align="center">１０</th>
       </tr>
       <tr>
-        <td align="center">やりすごし</td>
+        <td class='itemname itembuy'>やりすごしのツボ</td>
         <td class="mergetd" colspan="10">1000</td>
       </tr>
       <tr>
-        <td align="center">ほぞん</td>
+        <td class='itemname itembuy'>ほぞんのツボ</td>
         <td class="mergetd" colspan="10">1600</td>
       </tr>
       <tr>
-        <td align="center">へんげ</td>
+        <td class='itemname itembuy'>へんげのツボ</td>
         <td>1200</td>
         <td>1300</td>
         <td>1400</td>
@@ -2885,7 +2902,7 @@
         <td>2100</td>
       </tr>
       <tr>
-        <td align="center">そうこ</td>
+        <td class='itemname itembuy'>そうこのツボ</td>
         <td>2750</td>
         <td>3000</td>
         <td>3250</td>
@@ -2898,7 +2915,7 @@
         <td>5000</td>
       </tr>
       <tr>
-        <td align="center">ごうせい</td>
+        <td class='itemname itembuy'>ごうせいのツボ</td>
         <td>3350</td>
         <td>3700</td>
         <td>4050</td>
@@ -2911,7 +2928,7 @@
         <td>6500</td>
       </tr>
       <tr>
-        <td align="center">せなか</td>
+        <td class='itemname itembuy'>せなかのツボ</td>
         <td>1800</td>
         <td>1950</td>
         <td>2100</td>
@@ -2924,7 +2941,7 @@
         <td>3150</td>
       </tr>
       <tr>
-        <td align="center">トド</td>
+        <td class='itemname itembuy'>トドのツボ</td>
         <td>1760</td>
         <td>1920</td>
         <td>2080</td>
@@ -2937,11 +2954,11 @@
         <td>3200</td>
       </tr>
       <tr>
-        <td align="center">そこぬけ</td>
+        <td class='itemname itembuy'>そこぬけのツボ</td>
         <td class="mergetd" colspan="10">2500</td>
       </tr>
       <tr>
-        <td align="center">じゃくか</td>
+        <td class='itemname itembuy'>じゃくかのツボ</td>
         <td>1050</td>
         <td>1100</td>
         <td>1150</td>
@@ -2954,7 +2971,7 @@
         <td>1500</td>
       </tr>
       <tr>
-        <td align="center">しきべつ</td>
+        <td class='itemname itembuy'>しきべつのツボ</td>
         <td>1100</td>
         <td>1200</td>
         <td>1300</td>
@@ -2967,7 +2984,7 @@
         <td>2000</td>
       </tr>
       <tr>
-        <td align="center">ぶんれつ</td>
+        <td class='itemname itembuy'>ぶんれつのツボ</td>
         <td>8800</td>
         <td>9600</td>
         <td>10400</td>
@@ -2980,7 +2997,7 @@
         <td>16000</td>
       </tr>
       <tr>
-        <td align="center">きょうか</td>
+        <td class='itemname itembuy'>きょうかのツボ</td>
         <td>11000</td>
         <td>12000</td>
         <td>13000</td>
@@ -2993,7 +3010,7 @@
         <td>20000</td>
       </tr>
       <tr>
-        <td align="center">まもののルツボ</td>
+        <td class='itemname itembuy'>まもののルツボ</td>
         <td>2100</td>
         <td>2300</td>
         <td>2500</td>
@@ -3008,7 +3025,7 @@
 
     </tbody>
   </table>
-  <div id="itemtitle">壺の買取価格表</div>
+  <div class="itemtitle">壺の買取価格表</div>
   <table>
     <tbody id="tubo2">
       <tr>
@@ -3025,15 +3042,15 @@
         <th class="sticky" align="center">１０</th>
       </tr>
       <tr>
-        <td align="center">やりすごし</td>
+        <td class='itemname itemsell'>やりすごしのツボ</td>
         <td class="mergetd" colspan="10">400</td>
       </tr>
       <tr>
-        <td align="center">ほぞん</td>
+        <td class='itemname itemsell'>ほぞんのツボ</td>
         <td class="mergetd" colspan="10">800</td>
       </tr>
       <tr>
-        <td align="center">へんげ</td>
+        <td class='itemname itemsell'>へんげのツボ</td>
         <td>550</td>
         <td>600</td>
         <td>650</td>
@@ -3046,7 +3063,7 @@
         <td>1000</td>
       </tr>
       <tr>
-        <td align="center">そうこ</td>
+        <td class='itemname itemsell'>そうこのツボ</td>
         <td>1320</td>
         <td>1440</td>
         <td>1560</td>
@@ -3059,7 +3076,7 @@
         <td>2400</td>
       </tr>
       <tr>
-        <td align="center">ごうせい</td>
+        <td class='itemname itemsell'>ごうせいのツボ</td>
         <td>1650</td>
         <td>1800</td>
         <td>1950</td>
@@ -3072,7 +3089,7 @@
         <td>3000</td>
       </tr>
       <tr>
-        <td align="center">せなか</td>
+        <td class='itemname itemsell'>せなかのツボ</td>
         <td>770</td>
         <td>840</td>
         <td>910</td>
@@ -3085,7 +3102,7 @@
         <td>1400</td>
       </tr>
       <tr>
-        <td align="center">トド</td>
+        <td class='itemname itemsell'>トドのツボ</td>
         <td>660</td>
         <td>720</td>
         <td>780</td>
@@ -3098,11 +3115,11 @@
         <td>1200</td>
       </tr>
       <tr>
-        <td align="center">そこぬけ</td>
+        <td class='itemname itemsell'>そこぬけのツボ</td>
         <td class="mergetd" colspan="10">400</td>
       </tr>
       <tr>
-        <td align="center">じゃくか</td>
+        <td class='itemname itemsell'>じゃくかのツボ</td>
         <td>220</td>
         <td>240</td>
         <td>260</td>
@@ -3115,7 +3132,7 @@
         <td>400</td>
       </tr>
       <tr>
-        <td align="center">しきべつ</td>
+        <td class='itemname itemsell'>しきべつのツボ</td>
         <td>550</td>
         <td>600</td>
         <td>650</td>
@@ -3128,7 +3145,7 @@
         <td>1000</td>
       </tr>
       <tr>
-        <td align="center">ぶんれつ</td>
+        <td class='itemname itemsell'>ぶんれつのツボ</td>
         <td>4400</td>
         <td>4800</td>
         <td>5200</td>
@@ -3141,7 +3158,7 @@
         <td>8000</td>
       </tr>
       <tr>
-        <td align="center">きょうか</td>
+        <td class='itemname itemsell'>きょうかのツボ</td>
         <td>5500</td>
         <td>6000</td>
         <td>6500</td>
@@ -3154,7 +3171,7 @@
         <td>10000</td>
       </tr>
       <tr>
-        <td align="center">まもののルツボ</td>
+        <td class='itemname itemsell'>まもののルツボ</td>
         <td>330</td>
         <td>360</td>
         <td>390</td>
