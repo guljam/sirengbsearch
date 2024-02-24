@@ -32,7 +32,6 @@ function searchItemPrice(price) {
 
 function focusEventInputElement(e)
 {
-    log("focu")
     if (result.innerHTML === "" && input.value !== "")
     {
         _search();
@@ -71,9 +70,17 @@ function inputInfoVisible(visible)
     info.style.display = (visible === false)?'none':'inline';
 }
 
+function convertFullWidthNumberToString(fullWidthString) {
+    return fullWidthString.replace(/[０-９]/g, function(char) {
+        const fullWidthCode = char.charCodeAt(0);
+        const halfWidthCode = fullWidthCode - 0xFEE0;
+        return String.fromCharCode(halfWidthCode);
+    });
+}
+
 function inputEventInputElement(e)
 {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0);;
     _search();
 }
 
@@ -92,7 +99,7 @@ function _search()
     clearTimeout(resultDelayTimer);
     resultDelayTimer = setTimeout(function () {
 
-        const str = input.value;
+        let str = convertFullWidthNumberToString(input.value);
 
         if (str === "")
         {
