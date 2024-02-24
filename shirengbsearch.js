@@ -328,6 +328,19 @@ window.onload = function (e) {
     document.addEventListener('keydown', keydownGlobal);
     window.addEventListener('resize', resizeEventWindow);
     window.addEventListener('scroll', scrollEventWindow);
+
+    //앵커 주소 표시 id가 주소로 바뀌는거 막기
+    document.querySelectorAll('.scroll-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            // 기본 동작 막기
+            e.preventDefault();
+            // 앵커의 href 속성에서 섹션 ID 가져오기
+            const targetId = this.getAttribute('href').substring(1);
+            // 해당 섹션으로 스크롤
+            document.getElementById(targetId).scrollIntoView(true);
+        });
+    });
+
     wanakana.bind(input, { IMEMode: false });
     topButtonCenterPosition();
     checkTopButtonVisible();
