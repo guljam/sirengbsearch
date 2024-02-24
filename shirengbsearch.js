@@ -176,7 +176,7 @@ function searchItemPrice(price) {
 
         for (item in itemListAll[type]) {
             if (itemListAll[type][item] === price) {
-                tmpStr += "" + item + " : " + price + "<br>";
+                tmpStr += item + "：" + price + "<br>";
             }
         }
 
@@ -190,8 +190,8 @@ function searchItemName(str) {
     str = wanakana.toKatakana(str);
 
     const items = {
-        "アイテム説明": '.itemname:not(.itembuy,.itemsell)',
-        "モンスター説明": '.monstername',
+        "アイテム": '.itemname:not(.itembuy,.itemsell)',
+        "モンスター": '.monstername',
         "販売価格": '.itembuy',
         "買取価格": '.itemsell'
     }
@@ -207,7 +207,7 @@ function searchItemName(str) {
                 const innerText = wanakana.toKatakana(list[ele].innerText);
                 if (regex.test(innerText)) {
                     tempstr += "<span class='itemlink' id='itemlink" + itemResultList.length + "' onclick='clickEventItemlink(this)'>"
-                        + ((key === "モンスター") ? "[" + list[ele].previousElementSibling.innerText + "]":"#")
+                        + ((key === "モンスター") ? "［"+list[ele].previousElementSibling.innerText + "］":"#")
                         + list[ele].innerText + "</span> ";
                     itemResultList.push(list[ele]);
                     focusTableBG(list[ele].parentElement);
