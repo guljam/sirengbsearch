@@ -319,8 +319,8 @@ window.onload = function (e) {
     input.addEventListener('input', inputEventInput);
     input.addEventListener('compositionstart', compositionstartInput);
     input.addEventListener('compositionend', compositionendInput);
-    document.addEventListener('keydown', keydownGlobal);
     topbutton.addEventListener('pointerdown', pointerDownTopbutton);
+    document.addEventListener('keydown', keydownGlobal);
     window.addEventListener('resize', resizeEventWindow);
     window.addEventListener('scroll', scrollEventWindow);
     wanakana.bind(input, { IMEMode: false });
