@@ -108,18 +108,15 @@ function findTableParent(tdElement) {
     return parent;
 }
 
-function addFocusBoldFont(element)
-{
+function addFocusBoldFont(element) {
     removeFocusBoldFont();
     const par = element.parentElement;
     par.classList.add('itemfocusboldfont');
     autoscrollLastElement = par;
 }
 
-function removeFocusBoldFont()
-{
-    if (autoscrollLastElement)
-    {
+function removeFocusBoldFont() {
+    if (autoscrollLastElement) {
         autoscrollLastElement.classList.remove('itemfocusboldfont');
     }
 }
@@ -207,7 +204,7 @@ function searchItemName(str) {
                 const innerText = wanakana.toKatakana(list[ele].innerText);
                 if (regex.test(innerText)) {
                     tempstr += "<span class='itemlink' id='itemlink" + itemResultList.length + "' onclick='clickEventItemlink(this)'>"
-                        + ((key === "モンスター") ? "［"+list[ele].previousElementSibling.innerText + "］":"#")
+                        + ((key === "モンスター") ? "［" + list[ele].previousElementSibling.innerText + "］" : "#")
                         + list[ele].innerText + "</span> ";
                     itemResultList.push(list[ele]);
                     focusTableBG(list[ele].parentElement);
@@ -255,7 +252,7 @@ function initItemList() {
         const obj1 = {};
         const obj2 = {};
 
-        const list = document.querySelectorAll("#itemlist"+i+" .itemname");
+        const list = document.querySelectorAll("#itemlist" + i + " .itemname");
         for (const ele in list) {
 
             const key = list[ele].innerText;
