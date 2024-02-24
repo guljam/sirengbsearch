@@ -14,13 +14,18 @@ let compositionStarted = false;
 let searchLastString = null;
 let autoscrollLastElement = null;
 
-function scrollEventWindow(e) {
+function checkTopButtonVisible()
+{
     if (window.scrollY !== 0) {
         topbutton.style.display = 'block';
     }
-    else if (topbutton.style.display === 'block') {
+    else if (topbutton.style.display !== 'none') {
         topbutton.style.display = 'none';
     }
+}
+
+function scrollEventWindow(e) {
+    checkTopButtonVisible();
 }
 
 function goNextResult() {
@@ -325,6 +330,7 @@ window.onload = function (e) {
     window.addEventListener('scroll', scrollEventWindow);
     wanakana.bind(input, { IMEMode: false });
     topButtonCenterPosition();
+    checkTopButtonVisible();
     initItemList();
     _search();
 }
