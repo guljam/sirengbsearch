@@ -1,15 +1,17 @@
 const trace = console.log;
-const input = document.getElementById('search');
+const input = document.getElementById('input');
 const result = document.getElementById('result');
 const searchbox = document.getElementById('searchbox');
 const main = document.getElementById('main');
 const topbutton = document.getElementById('topbutton');
 const searchtip = document.getElementById('searchtip');
-const itemLinkList = [];
+const itemResultList = [];
 const ITEM_FOUND_COLOR = "#ffff88";
 let resultDelayTimer = null;
 let itemSearchNextIndex = 0;
 let itemListAll = {};
+let compositionStarted = false;
+let searchLastString = null;
 
 function searchItemPrice(price) {
     price = price + "";
@@ -23,26 +25,33 @@ function searchItemPrice(price) {
         }
 
         if (tmpStr !== "") {
-            result.innerHTML += "<span class='resultTableHeader" + ((type.indexOf("買取") >= 0) ? "2" : "1") + "'>" + type + "</span>" + "<br>" + tmpStr;
+            result.innerHTML += "<span class='resultTableHeader" + ((type.indexOf("買取") >= 0) ? "2" : "1") + "'>" + type + "</span>" + "<br>" + tmpStr + "<p></p>";
         }
-        result.innerHTML += "<p></p>";
     }
 }
-
 
 function scrollEventWindow(e) {
     if (window.scrollY !== 0) {
         topbutton.style.display = 'block';
     }
-    else if (topbutton.style.display = 'none') {
+    else if (topbutton.style.display === 'block') {
         topbutton.style.display = 'none';
     }
 }
 
-function focusEventInput(e) {
-    if (result.innerHTML === "" && input.value !== "") {
-        _search();
+function goNextResult() {
+    autoscroll(itemResultList[itemSearchNextIndex]);
+    itemSearchNextIndex++;
+    if (itemSearchNextIndex >= itemResultList.length) {
+        itemSearchNextIndex = 0;
     }
+}
+
+function topButtonCenterPosition() {
+    topbutton.style.left = (window.innerWidth / 2 - topbutton.clientWidth / 2) + "px";
+}
+function resizeEventWindow(e) {
+    topButtonCenterPosition();
 }
 
 function keydownGlobal(e) {
@@ -60,12 +69,10 @@ function keydownGlobal(e) {
         input.value = "";
         _resetResult();
     }
-    else if (itemLinkList.length > 0) {
+    else if (itemResultList.length > 0) {
         if (e.keyCode === 9 || e.keyCode === 13) {
-            autoscroll(itemLinkList[itemSearchNextIndex]);
-            itemSearchNextIndex++;
-            if (itemSearchNextIndex >= itemLinkList.length) {
-                itemSearchNextIndex = 0;
+            if (itemResultList.length > 0) {
+                goNextResult();
             }
             e.preventDefault();
         }
@@ -80,8 +87,16 @@ function convertFullWidthNumberToString(fullWidthString) {
     });
 }
 
-function pointerDownTopButton(e) {
+function pointerDownTopbutton(e) {
     window.scrollTo(0, 0);
+}
+
+function compositionstartInput(e) {
+    compositionStarted = true;
+}
+
+function compositionendInput(e) {
+    compositionStarted = false;
 }
 
 function inputEventInput(e) {
@@ -89,33 +104,46 @@ function inputEventInput(e) {
     _search();
 }
 
+function inputOKEvent(e) {
+    if (input.value !== searchLastString) {
+        window.scrollTo(0, 0);
+        _search();
+    }
+}
+
 function _resetResult() {
     result.innerHTML = "";
-    itemLinkList.length = 0;
+    itemResultList.length = 0;
     itemSearchNextIndex = 0;
     resetTableFocusBG();
 }
 
 function _search() {
-    _resetResult();
-    clearTimeout(resultDelayTimer);
-    resultDelayTimer = setTimeout(function () {
+    if (compositionStarted === false) {
+        _resetResult();
+        clearTimeout(resultDelayTimer);
+        resultDelayTimer = setTimeout(function () {
+            let str = convertFullWidthNumberToString(input.value);
+            searchLastString = str;
 
-        let str = convertFullWidthNumberToString(input.value);
+            if (str === "") {
+                searchtip.style.display = 'block';
+                return;
+            }
+            searchtip.style.display = 'none';
 
-        if (str === "") {
-            searchtip.style.display = 'block';
-            return;
-        }
-        searchtip.style.display = 'none';
+            if (/^\d+$/.test(str)) {
+                searchItemPrice(parseInt(str));
+            }
+            else {
+                searchItemName(str);
+            }
 
-        if (/^\d+$/.test(str)) {
-            searchItemPrice(parseInt(str));
-        }
-        else {
-            searchItemName(str);
-        }
-    }, 200);
+            if (result.innerHTML === "") {
+                result.innerHTML = "<span class='resultTableHeader'>No data</span>";
+            }
+        }, 200);
+    }
 }
 
 function findTableParent(tdElement) {
@@ -129,7 +157,6 @@ function findTableParent(tdElement) {
 }
 
 function autoscroll(element) {
-    trace('autoscroll')
     const table = findTableParent(element);
     element.scrollIntoView(true);
     if (table) {
@@ -144,7 +171,7 @@ function clickEventItemLink(element) {
     const matches = element.id.match(/\d+/);
     if (matches) {
         const index = parseInt(matches[0], 10);
-        autoscroll(itemLinkList[index]);
+        autoscroll(itemResultList[index]);
     }
 }
 
@@ -189,10 +216,10 @@ function searchItemName(str) {
             if (typeof (list[ele]) === "object") {
                 const innerText = wanakana.toKatakana(list[ele].innerText);
                 if (regex.test(innerText)) {
-                    tempstr += "<span class=itemlink id='itemLink" + itemLinkList.length + "' onclick='clickEventItemLink(this)'>"
+                    tempstr += "<span class=itemlink id='itemLink" + itemResultList.length + "' onclick='clickEventItemLink(this)'>"
                         + ((key === "アイテム") ? "#" : "[" + list[ele].previousElementSibling.innerText + "]")
                         + list[ele].innerText + "</span> ";
-                    itemLinkList.push(list[ele]);
+                    itemResultList.push(list[ele]);
                     focusTableBG(list[ele].parentElement);
                 }
             }
@@ -203,8 +230,8 @@ function searchItemName(str) {
         }
     }
 
-    if (itemLinkList.length === 1) {
-        autoscroll(itemLinkList[itemLinkList.length - 1]);
+    if (itemResultList.length === 1) {
+        autoscroll(itemResultList[itemResultList.length - 1]);
     }
 }
 
@@ -248,7 +275,7 @@ function initItemList() {
     for (let i = 0; i < 4; i++) {
         const obj = {};
         const list = document.querySelectorAll("#" + listArr[i] + " td[align='center']");
-        const itemtypestring = (i <= 2) ? "のつえ" : "のツボ";
+        const itemtypestring = (i < 2) ? "のつえ" : "のツボ";
 
         for (const ele in list) {
             if (typeof (list[ele]) === "object") {
@@ -277,11 +304,19 @@ function initItemList() {
     }
 }
 
-topbutton.addEventListener('pointerdown', pointerDownTopButton);
-input.addEventListener('input', inputEventInput);
-input.addEventListener('focus', focusEventInput);
-document.addEventListener('keydown', keydownGlobal);
-window.addEventListener('scroll', scrollEventWindow);
-wanakana.bind(input, { IMEMode: false });
-initItemList();
-_search();
+window.onload = function (e) {
+    topbutton.addEventListener('pointerdown', pointerDownTopbutton);
+    input.addEventListener('input', inputEventInput);
+    input.addEventListener('compositionstart', compositionstartInput);
+    input.addEventListener('compositionend', compositionendInput);
+    document.getElementById('inputOK').addEventListener('click', inputOKEvent);
+    document.getElementById('inputOK').addEventListener('touchstart', inputOKEvent);
+    document.addEventListener('keydown', keydownGlobal);
+    topbutton.addEventListener('pointerdown', pointerDownTopbutton);
+    window.addEventListener('resize', resizeEventWindow);
+    window.addEventListener('scroll', scrollEventWindow);
+    wanakana.bind(input, { IMEMode: false });
+    topButtonCenterPosition();
+    initItemList();
+    _search();
+}

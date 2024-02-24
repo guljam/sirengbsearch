@@ -64,12 +64,14 @@
     }
 
     .resultTableHeader2 {
-      background-color: #cbfff1;
+      color: #2d556e;
+      background-color: #d4fff3;
       font-size: 23px;
     }
 
     .resultTableHeader1 {
-      background-color: #ffb1b1;
+      color: rgb(234, 35, 35);
+      background-color: #ffd0c2;
       font-size: 23px;
     }
 
@@ -100,31 +102,37 @@
       margin-top: auto;
     }
 
-    #search {
-      width: 100%;
+    #inputOK {
+      font-size: 20px;
+      width: 70px;
+    }
+
+    #input {
+      min-width: 400px;
       height: 30px;
-      font-size: 20px
+      font-size: 20px;
     }
 
     #originallink {
       display: inline-block;
       font-size: 14px;
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     #topbutton {
+      display: block;
+      position: fixed;
       font-weight: bold;
-      border: 1px solid blue;
-      z-index: 1;
+      border: 1px dotted black;
       background-color: #facd5c;
       color: blue;
       font-size: 25px;
       width: 80px;
-      position: fixed;
-      right: 50%;
-      bottom: 30px;
       cursor: pointer;
       text-align: center;
+      margin-left: 5px;
+      margin-right: 5px;
+      bottom: 10px;
     }
 
     #titlecontainer {
@@ -149,13 +157,16 @@
 <body>
   <div id="searchbox">
     <div id="titlecontainer">
-      <h3 style="display:inline-block">シレンGB攻略検索機</h1>
-        <div id="originallink">提供：<a href="https://gameboy123.web.fc2.com/sirengb1.top.html">「風来のシレンＧＢ 月影村の怪物」
-            +GBCLOVER</a></div>
+      <h2 style="display:inline-block">シレンGB攻略検索機</h2>
+      <div id="originallink">データ参考:<a href="https://gameboy123.web.fc2.com/sirengb1.top.html">「風来のシレンＧＢ 月影村の怪物」
+          +GBCLOVER</a></div>
     </div>
-    <input type="text" id="search" name="myText" placeholder="「数字入力」アイテムの価格を検索　/　「文字入力」アイテム・モンスターの名前を検索">
+    <input type="text" id="input" name="myText">
+    <button id="inputOK">OK</button>
     <b id="searchtip">
-      ※キーを押して検索を始める<br>
+      ※数字入力:アイテムの価格を検索<br>
+      ※文字入力ア：アイテムとモンスターの名前を検索<br>
+      ※キーを押して検索開始<br>
       ※検索結果が複数の場合、EnterまたはTabキーで次のキーワードに移動<br>
       ※ESCキーで検索取り消し
     </b>
@@ -164,8 +175,10 @@
   </div>
   <p></p>
 
-  ※易…やさしい、普…ふつう、難…むずかしい、も…もっとむずかしい<br>
-  ※○…フロアに落ちている　店…店で買える　◎…落ちているか店で売っている
+  <b>
+    ※易…やさしい、普…ふつう、難…むずかしい、も…もっとむずかしい<br>
+    ※○…フロアに落ちている　店…店で買える　◎…落ちているか店で売っている
+  </b>
   <div id="itemtitle">武器</div>
   <table class="itemlist" id="itemlist1">
     <tbody>
@@ -1572,11 +1585,13 @@
     </tbody>
   </table>
   <p></p>
-  ※目…ひとつめゴロシが効く。<br>
-  ※霊…じょうぶつのカマが効く。<br>
-  ※吸…ドレインバスターが効く。<br>
-  ※盗…トドのたてで特殊攻撃を防げる。<br>
-  ※魔…やまびこのたてで特殊攻撃を防げる。<p></p>
+  <b>
+    ※目…ひとつめゴロシが効く。<br>
+    ※霊…じょうぶつのカマが効く。<br>
+    ※吸…ドレインバスターが効く。<br>
+    ※盗…トドのたてで特殊攻撃を防げる。<br>
+    ※魔…やまびこのたてで特殊攻撃を防げる。<p></p>
+  </b>
   <div id="itemtitle">モンスター</div>
   <table id="monsters">
     <tbody>
