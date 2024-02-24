@@ -1,0 +1,2877 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シレンGB攻略検索機</title>
+    <script type="text/javascript" src="wanakana.min.js"></script>
+    <style>
+
+        body{
+            font-family:'Courier New', Courier, monospace;
+        }
+        #footDiv{
+            margin-bottom: 300px;
+        }
+
+        #main{
+            margin-top: 50px;
+            height:100%;
+            overflow: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* th를 sticky로 만들기 */
+        th.sticky {
+            background-color: #facd5c;
+            position: sticky;
+            top: 0;
+        }
+
+        span{
+            font-size:22px;
+            font-weight: bold;
+        }
+        .mergetd
+        {
+            text-align: center;
+        }
+
+        .matching-char {
+            color: red;
+        }
+        .itemLink{
+            color:blue;
+            text-decoration: underline;
+            font-weight: 100;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .resultContent{
+            font-size: 20px;
+        }
+
+        .resultTableHeader2{
+            background-color:#cbfff1;
+
+        }
+
+        .resultTableHeader1{
+            background-color:#ffb1b1;
+        }
+
+        #result{
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        table{
+            border:1px solid rgb(0, 0, 0);
+        }
+
+        th{
+          border:1px solid rgb(0, 0, 0)
+        }
+        td{
+            border:1px solid rgb(0, 0, 0);
+        }
+
+        #searchbox{
+            z-index: 9999;
+            border: 1px solid black;
+            /* overflow: auto; */
+            /* display: none; */
+            /* text-align: center; */
+            height:auto;
+            position: block;
+            top:0;
+            background-color: rgba(255,280,150,1.0);
+            padding: 5px;
+            margin-top: auto;
+        }
+
+        #search{
+            width:400px;
+            height:30px;
+            font-size:20px
+        }
+
+        #searchinfo{
+            margin-left: 10px;
+            font-size: 1.0em;
+            font-weight: 100;
+        }
+
+        #originallink
+        {
+            display: block;
+            text-align: right;
+            font-size: 15;
+            margin-bottom: 7px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="searchbox">
+        <input type="text" id="search" name="myText">
+        <div id="searchinfo">
+            「数字入力」アイテムの価格を検索　/　「文字入力」アイテム・モンスターの名前を検索
+        </div>
+        <div id="result">
+        </div>
+    </div>
+<p></p>
+
+<b>※キーを押して検索を始める / EnterまたはTabキーで次のキーワードに移動<p></p></b>
+※易…やさしい、普…ふつう、難…むずかしい、も…もっとむずかしい<br>
+※○…フロアに落ちている　店…店で買える　◎…落ちているか店で売っている <span id="originallink">提供：<a href="https://gameboy123.web.fc2.com/sirengb1.top.html">「風来のシレンＧＢ 月影村の怪物」 +GBCLOVER</a></span>
+
+<span >武器</span>
+<table class="itemlist" id="itemlist1">
+  <tbody><tr>
+    <th class="sticky" width="25%" align="center">アイテム</th>
+    <th class="sticky" align="center">攻</th>
+    <th class="sticky" align="center">価格</th>
+    <th class="sticky" align="center">売値</th>
+    <th class="sticky" align="center">効果</th>
+    <th class="sticky" width="1%" align="center">易</th>
+    <th class="sticky" width="1%" align="center">普</th>
+    <th class="sticky" width="1%" align="center">難</th>
+    <th class="sticky" width="1%" align="center">も</th>
+      </tr><tr>
+    <td align="center">こんぼう</td>
+    <td>2</td>
+    <td>240</td>
+    <td>80</td>
+    <td>錆びない</td>
+    <td width="1%">○</td>
+    <td width="1%">○</td>
+    <td width="1%">○</td>
+    <td width="1%">○</td>
+      </tr><tr>
+    <td align="center">ながまき</td>
+    <td>4</td>
+    <td>500</td>
+    <td>200</td>
+    <td>特殊能力なし</td>
+    <td width="1%">○</td>
+    <td width="1%">◎</td>
+    <td width="1%">◎</td>
+    <td width="1%">◎</td>
+      </tr><tr>
+    <td align="center">カタナ</td>
+    <td>6</td>
+    <td>800</td>
+    <td>300</td>
+    <td>特殊能力なし</td>
+    <td width="1%">○</td>
+    <td width="1%">◎</td>
+    <td width="1%">◎</td>
+    <td width="1%">◎</td>
+      </tr><tr>
+    <td align="center">どうたぬき</td>
+    <td>8</td>
+    <td>1500</td>
+    <td>700</td>
+    <td>特殊能力なし</td>
+    <td width="1%">○</td>
+    <td width="1%">◎</td>
+    <td width="1%">◎</td>
+    <td width="1%">◎</td>
+      </tr><tr>
+    <td align="center">つるはし</td>
+    <td>5</td>
+    <td>260</td>
+    <td>100</td>
+    <td>壁が掘れる。何度も使うと壊れる</td>
+    <td width="1%">○</td>
+    <td width="1%">○</td>
+    <td width="1%">○</td>
+    <td width="1%">○</td>
+      </tr><tr>
+    <td align="center">ひとつめゴロシ</td>
+    <td>5</td>
+    <td>3300</td>
+    <td>1130</td>
+    <td>1ツ目系モンスターに効く</td>
+    <td width="1%">○</td>
+    <td width="1%">◎</td>
+    <td width="1%">店</td>
+    <td width="1%">◎</td>
+      </tr><tr>
+    <td align="center">ドレインバスター</td>
+    <td>5</td>
+    <td>4000</td>
+    <td>2000</td>
+    <td>ドレイン系モンスターに効く</td>
+    <td width="1%">○</td>
+    <td width="1%">◎</td>
+    <td width="1%">店</td>
+    <td width="1%">◎</td>
+      </tr><tr>
+    <td align="center">ドラゴンキラー</td>
+    <td>7</td>
+    <td>4500</td>
+    <td>2200</td>
+    <td>ドラゴン系モンスターに効く</td>
+    <td width="1%">　</td>
+    <td width="1%">店</td>
+    <td width="1%">店</td>
+    <td width="1%">店</td>
+      </tr><tr>
+    <td align="center">ヨウトウかまいたち</td>
+    <td>3</td>
+    <td>5300</td>
+    <td>2600</td>
+    <td>前3方向に攻撃できる</td>
+    <td width="1%">○</td>
+    <td width="1%">◎</td>
+    <td width="1%">◎</td>
+    <td width="1%">店</td>
+      </tr><tr>
+    <td align="center">ミノタウロスのおの</td>
+    <td>4</td>
+    <td>6000</td>
+    <td>2700</td>
+    <td>会心の一撃が出る</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+      </tr><tr>
+    <td align="center">じょうぶつのカマ</td>
+    <td>2</td>
+    <td>8000</td>
+    <td>3250</td>
+    <td>ゴースト系モンスターに効く</td>
+    <td width="1%">○</td>
+    <td width="1%">◎</td>
+    <td width="1%">店</td>
+    <td width="1%">店</td>
+      </tr><tr>
+    <td align="center">ひっちゅうのけん</td>
+    <td>2</td>
+    <td>10000</td>
+    <td>4500</td>
+    <td>必ず攻撃があたる</td>
+    <td width="1%">　</td>
+    <td width="1%">店</td>
+    <td width="1%">店</td>
+    <td width="1%">店</td>
+      </tr><tr>
+    <td align="center">マンジカブラ</td>
+    <td>12</td>
+    <td>15000</td>
+    <td>7000</td>
+    <td>変化の壺にアイテムを入れたときランダムで出現</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+      </tr><tr>
+    <td align="center">かじんフウマとう</td>
+    <td>30</td>
+    <td>30000</td>
+    <td>12500</td>
+    <td>カタナ＋９９を天の恵み巻物か合成の壺によって＋１００以上にすると手に入る</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+      </tr><tr>
+    <td align="center">ひけんカブラステギ</td>
+    <td>50</td>
+    <td>40000</td>
+    <td>17500</td>
+    <td>マンジカブラ＋９９を変化の壺に入れると手に入る</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+      </tr><tr>
+    <td align="center">マムルのけん</td>
+    <td>5</td>
+    <td>10000</td>
+    <td>5000</td>
+    <td>「難しい」クリア後、再び「難しい」の冒険で、あるキャラをつれて帰ると手に入る</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+    <td width="1%">　</td>
+      </tr>
+    </tbody>
+</table><p></p>
+
+<span>盾</span>
+<table class="itemlist" id="itemlist2">
+    <tbody><tr>
+  <th class="sticky" width="25%" align="center">アイテム</th>
+  <th class="sticky" align="center">攻</th>
+  <th class="sticky" align="center">価格</th>
+  <th class="sticky" align="center">売値</th>
+  <th class="sticky" align="center">効果</th>
+  <th class="sticky" width="1%" align="center">易</th>
+  <th class="sticky" width="1%" align="center">普</th>
+  <th class="sticky" width="1%" align="center">難</th>
+  <th class="sticky" width="1%" align="center">も</th>
+    </tr><tr>
+  <td align="center">かわのたて</td>
+  <td>2</td>
+  <td>1000</td>
+  <td>350</td>
+  <td>ハラヘリ速度が２分の１</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">もっこうのたて</td>
+  <td>3</td>
+  <td>600</td>
+  <td>200</td>
+  <td>錆びない</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">せいどうこうのたて</td>
+  <td>4</td>
+  <td>300</td>
+  <td>100</td>
+  <td>特殊能力なし</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">てっこうのたて</td>
+  <td>7</td>
+  <td>1800</td>
+  <td>750</td>
+  <td>特殊能力なし</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">ヒャッキのたて</td>
+  <td>9</td>
+  <td>2500</td>
+  <td>1250</td>
+  <td>特殊能力なし</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">じゅうそうのたて</td>
+  <td>12</td>
+  <td>4000</td>
+  <td>1000</td>
+  <td>ハラヘリ速度が２倍</td>
+  <td>　</td>
+  <td>店</td>
+  <td>店</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">トドのたて</td>
+  <td>3</td>
+  <td>2000</td>
+  <td>800</td>
+  <td>盗まれなくなる</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">じらいナバリのたて</td>
+  <td>3</td>
+  <td>4000</td>
+  <td>1500</td>
+  <td>爆発のダメージが２分の１いなる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">つかいすてのたて</td>
+  <td>30</td>
+  <td>4500</td>
+  <td>1200</td>
+  <td>攻撃を喰らうたびに守備力が下がる</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">ドラゴンシールド</td>
+  <td>7</td>
+  <td>5000</td>
+  <td>2500</td>
+  <td>炎のダメージが２分の１</td>
+  <td>　</td>
+  <td>店</td>
+  <td>店</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">バトルカウンター</td>
+  <td>5</td>
+  <td>5000</td>
+  <td>2500</td>
+  <td>ダメージを一部反射する</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">みきりのたて</td>
+  <td>5</td>
+  <td>8000</td>
+  <td>3000</td>
+  <td>攻撃を避けやすい</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">やまびこのたて</td>
+  <td>5</td>
+  <td>12000</td>
+  <td>6000</td>
+  <td>魔法攻撃を反射する</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">フウマのたて</td>
+  <td>15</td>
+  <td>7500</td>
+  <td>2500</td>
+  <td>変化の壺にアイテムを入れたときにランダムで出現 </td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+    </tr><tr>
+  <td align="center">らせんフウマのたて</td>
+  <td>30</td>
+  <td>50000</td>
+  <td>22500</td>
+  <td>フウマのたて＋９９を変化の壺に入れる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+    </tr><tr>
+  <td align="center">マムルのたて</td>
+  <td>6</td>
+  <td>10000</td>
+  <td>5000</td>
+  <td>難しい」クリア後、再び「難しい」の冒険で、あるキャラをつれて帰ることにより手に入る </td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>矢</span>
+<table class="itemlist" id="itemlist3">
+    <tbody><tr>
+  <th class="sticky" width="30%" align="center">アイテム</th>
+  <th class="sticky" align="center">価格</th>
+  <th class="sticky" align="center">売値</th>
+  <th class="sticky" align="center">効果</th>
+  <th class="sticky" width="1%" align="center">易</th>
+  <th class="sticky" width="1%" align="center">普</th>
+  <th class="sticky" width="1%" align="center">難</th>
+  <th class="sticky" width="1%" align="center">も</th>
+    </tr><tr>
+  <td align="center">きのや</td>
+  <td>10</td>
+  <td>2</td>
+  <td>普通の矢</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">てつのや</td>
+  <td>40</td>
+  <td>10</td>
+  <td>最も強力な矢</td>
+  <td>　</td>
+  <td>○</td>
+  <td>　</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">ぎんのや</td>
+  <td>80　　</td>
+  <td>20　　</td>
+  <td>貫通して飛び複数の敵を倒せるが、必ずあたるわけではない</td>
+  <td>○</td>
+  <td>　</td>
+  <td>　</td>
+  <td>店</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>壺</span>
+<table class="itemlist" id="itemlist4">
+    <tbody><tr>
+  <th class="sticky" width="30%" align="center">アイテム</th>
+  <th class="sticky" align="center">価格</th>
+  <th class="sticky" align="center">売値</th>
+  <th class="sticky" align="center">効果</th>
+  <th class="sticky" width="1%" align="center">易</th>
+  <th class="sticky" width="1%" align="center">普</th>
+  <th class="sticky" width="1%" align="center">難</th>
+  <th class="sticky" width="1%" align="center">も</th>
+    </tr><tr>
+  <td align="center">きょうかのツボ</td>
+  <td>10000</td>
+  <td>5000</td>
+  <td>中の剣・盾・杖が階段を下りるごとに強くなる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">ごうせいのツボ</td>
+  <td>3000</td>
+  <td>1500</td>
+  <td>入れたアイテムを合成できる</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">しきべつのツボ</td>
+  <td>1000</td>
+  <td>500</td>
+  <td>入れたアイテムを識別できる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">じゃくかのツボ</td>
+  <td>1000</td>
+  <td>200</td>
+  <td>中の剣・盾・杖が階段を下りるごとに弱化する</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">せなかのツボ</td>
+  <td>1650</td>
+  <td>700</td>
+  <td>押すと体力全快＆異常回復</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">そうこのツボ</td>
+  <td>2500</td>
+  <td>1200</td>
+  <td>入れたアイテムを倉庫に送る</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">そこぬけのツボ</td>
+  <td>2500</td>
+  <td>400</td>
+  <td>入れたアイテムが消える、割ると落とし穴出現</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">トドのツボ</td>
+  <td>1600</td>
+  <td>600</td>
+  <td>押すと直線状の壷以外のアイテムを取ることができる、割るとトドが出現</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">ぶんれつのツボ</td>
+  <td>8000</td>
+  <td>4000</td>
+  <td>入れたアイテムが２つになる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">へんげのツボ</td>
+  <td>1100</td>
+  <td>500</td>
+  <td>入れたアイテムが別のものになる</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">ほぞんのツボ</td>
+  <td>1600</td>
+  <td>800</td>
+  <td>アイテムを出し入れできる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">まもののルツボ</td>
+  <td>1900</td>
+  <td>300</td>
+  <td>モンスターが容量の数だけ出てくる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">やりすごしのツボ</td>
+  <td>1000</td>
+  <td>400</td>
+  <td>しばらく敵から隠れることができる、敵を閉じ込めることもできる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>草・種</span>
+<table class="itemlist" id="itemlist5">
+    <tbody>
+      <tr>
+        <th width="30%" align="center" class="sticky" >アイテム</th>
+        <th align="center" class="sticky" >価格</th>
+        <th align="center" class="sticky" >売値</th>
+        <th align="center" class="sticky" >効果</th>
+        <th width="1%" align="center" class="sticky" >易</th>
+        <th width="1%" align="center" class="sticky" >普</th>
+        <th width="1%" align="center" class="sticky" >難</th>
+        <th width="1%" align="center" class="sticky" >も</th>
+      </tr>
+      <tr>
+        <td align="center">いかくちょうのたね</td>
+        <td>1000</td>
+        <td>500</td>
+        <td>最大満腹度が１０上がる</td>
+        <td>○</td>
+        <td>◎</td>
+        <td>◎</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">いしゅくしょうのたね</td>
+        <td>200</td>
+        <td>60</td>
+        <td>最大満腹度が１０下がる</td>
+        <td>　</td>
+        <td>　</td>
+        <td>　</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">いのちのくさ</td>
+        <td>500</td>
+        <td>200</td>
+        <td>ＨＰの最大値が５上がる</td>
+        <td>○</td>
+        <td>○</td>
+        <td>○</td>
+        <td>○</td>
+      </tr>
+      <tr>
+        <td align="center">おとぎりそう</td>
+        <td>100</td>
+        <td>50</td>
+        <td>ＨＰが１００回復する、ＨＰがマックスのときに飲むと最大ＨＰが２上がる</td>
+        <td>○</td>
+        <td>○</td>
+        <td>○</td>
+        <td>○</td>
+      </tr>
+      <tr>
+        <td align="center">クネクネそう</td>
+        <td>200</td>
+        <td>50</td>
+        <td>レベルが１下がる</td>
+        <td>　</td>
+        <td>　</td>
+        <td>　</td>
+        <td>○</td>
+      </tr>
+      <tr>
+        <td align="center">こんらんそう</td>
+        <td>500</td>
+        <td>200</td>
+        <td>混乱する</td>
+        <td>　</td>
+        <td>　</td>
+        <td>◎</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">ざっそう</td>
+        <td>200</td>
+        <td>60</td>
+        <td>効果なし</td>
+        <td>　</td>
+        <td>　</td>
+        <td>　</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">しあわせそう</td>
+        <td>1000</td>
+        <td>500</td>
+        <td>レベルが１上がる</td>
+        <td>○</td>
+        <td>◎</td>
+        <td>店</td>
+        <td>店</td>
+      </tr>
+      <tr>
+        <td align="center">すいみんそう</td>
+        <td>750</td>
+        <td>300</td>
+        <td>眠りにつく</td>
+        <td>　</td>
+        <td>◎</td>
+        <td>◎</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">すばやさのたね</td>
+        <td>750</td>
+        <td>350</td>
+        <td>２倍速になる</td>
+        <td>　</td>
+        <td>◎</td>
+        <td>◎</td>
+        <td>○</td>
+      </tr>
+      <tr>
+        <td align="center">たかとびそう</td>
+        <td>300</td>
+        <td>70</td>
+        <td>ワープする</td>
+        <td>○</td>
+        <td>◎</td>
+        <td>◎</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">ちからのたね</td>
+        <td>500</td>
+        <td>250</td>
+        <td>ちからが1、最大値が1上がる</td>
+        <td>○</td>
+        <td>◎</td>
+        <td>◎</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">ちょうふこうのたね</td>
+        <td>200</td>
+        <td>30</td>
+        <td>レベル、HPが1になる</td>
+        <td>　</td>
+        <td>　</td>
+        <td>　</td>
+        <td>店</td>
+      </tr>
+      <tr>
+        <td align="center">てんしのたね</td>
+        <td>10000</td>
+        <td>1500</td>
+        <td>レベルが5上がる</td>
+        <td>　</td>
+        <td>店</td>
+        <td>　</td>
+        <td>店</td>
+      </tr>
+      <tr>
+        <td align="center">どくけしそう</td>
+        <td>650</td>
+        <td>250</td>
+        <td>ちからを回復</td>
+        <td>　</td>
+        <td>　</td>
+        <td>　</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">どくそう</td>
+        <td>50</td>
+        <td>25</td>
+        <td>ちからとＨＰが下がり、速度が２分の１になる</td>
+        <td>　</td>
+        <td>　</td>
+        <td>　</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">ドラゴンそう</td>
+        <td>500</td>
+        <td>200</td>
+        <td>炎を吐いて攻撃</td>
+        <td>○</td>
+        <td>◎</td>
+        <td>◎</td>
+        <td>◎</td>
+      </tr>
+      <tr>
+        <td align="center">ふこうのたね</td>
+        <td>200</td>
+        <td>40</td>
+        <td>レベルが３下がる</td>
+        <td>　</td>
+        <td>　</td>
+        <td>　</td>
+        <td>店</td>
+      </tr>
+      <tr>
+        <td align="center">ふっかつのくさ</td>
+        <td>5000</td>
+        <td>2500</td>
+        <td>持っていると死んでも復活する</td>
+        <td>○</td>
+        <td>店</td>
+        <td>店</td>
+        <td>店</td>
+      </tr>
+      <tr>
+        <td align="center">むてきそう</td>
+        <td>3000</td>
+        <td>100</td>
+        <td>２０ターンの間、無敵になる</td>
+        <td>○</td>
+        <td>◎</td>
+        <td>店</td>
+        <td>店</td>
+      </tr>
+      <tr>
+        <td align="center">めぐすりそう</td>
+        <td>50</td>
+        <td>25</td>
+        <td>罠が見えるようになる</td>
+        <td>　</td>
+        <td>○</td>
+        <td>○</td>
+        <td>○</td>
+      </tr>
+      <tr>
+        <td align="center">やくそう</td>
+        <td>50</td>
+        <td>25</td>
+        <td>ＨＰが２５回復する、ＨＰがマックスのときに飲むと最大ＨＰが１上がる</td>
+        <td>　</td>
+        <td>○</td>
+        <td>○</td>
+        <td>○</td>
+      </tr>
+    </tbody>
+  </table>
+  <p></p>
+<span>杖</span>
+<table class="itemlist" id="itemlist6">
+    <tbody><tr>
+  <th class="sticky" width="30%" align="center">アイテム</th>
+  <th class="sticky" align="center">価格</th>
+  <th class="sticky" align="center">売値</th>
+  <th class="sticky" align="center">効果</th>
+  <th class="sticky" width="1%" align="center">易</th>
+  <th class="sticky" width="1%" align="center">普</th>
+  <th class="sticky" width="1%" align="center">難</th>
+  <th class="sticky" width="1%" align="center">も</th>
+    </tr><tr>
+  <td align="center">いたみわけのつえ</td>
+  <td>1000</td>
+  <td>350</td>
+  <td>敵とダメージを分けあう</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">いちじしのぎのつえ</td>
+  <td>700</td>
+  <td>350</td>
+  <td>階段の上に飛ばし、金縛りに</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">かなしばりのつえ</td>
+  <td>700</td>
+  <td>350</td>
+  <td>金縛りにする</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">しあわせのつえ</td>
+  <td>800</td>
+  <td>400</td>
+  <td>レベルを１上げる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">ばしょがえのつえ</td>
+  <td>600</td>
+  <td>300</td>
+  <td>位置が入れ替わる</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">ふういんのつえ</td>
+  <td>1000</td>
+  <td>500</td>
+  <td>特殊能力を封印する</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">ふきとばしのつえ</td>
+  <td>600</td>
+  <td>300</td>
+  <td>吹き飛ばし、５ダメージを与える</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">ふこうのつえ</td>
+  <td>800</td>
+  <td>400</td>
+  <td>レベルを１下げる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">まどうのつえ</td>
+  <td>500</td>
+  <td>250</td>
+  <td>ランダムで効果がある</td>
+  <td>○</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">みがわりのつえ</td>
+  <td>1000</td>
+  <td>500</td>
+  <td>混乱させ、身代わりにする</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>巻物</span>
+<table class="itemlist" id="itemlist7">
+    <tbody><tr>
+  <th class="sticky" width="30%" align="center">アイテム</th>
+  <th class="sticky" align="center">価格</th>
+  <th class="sticky" align="center">売値</th>
+  <th class="sticky" align="center">効果</th>
+  <th class="sticky" width="1%" align="center">易</th>
+  <th class="sticky" width="1%" align="center">普</th>
+  <th class="sticky" width="1%" align="center">難</th>
+  <th class="sticky" width="1%" align="center">も</th>
+    </tr><tr>
+  <td align="center">あかりのまきもの</td>
+  <td>300</td>
+  <td>150</td>
+  <td>マップや敵、アイテムが見えるようになる</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">おおべやのまきもの</td>
+  <td>400</td>
+  <td>200</td>
+  <td>その階を1つの大部屋にする</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">おはらいのまきもの</td>
+  <td>500</td>
+  <td>250</td>
+  <td>呪いを解く</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">くちなしのまきもの</td>
+  <td>500</td>
+  <td>250</td>
+  <td>口が使えなくなる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">こまったときのまきもの</td>
+  <td>1000</td>
+  <td>250</td>
+  <td>状況に応じて助けてくれる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">こんらんのまきもの</td>
+  <td>100</td>
+  <td>50</td>
+  <td>周囲の敵が混乱する</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">ジェノサイドのまきもの</td>
+  <td>5000</td>
+  <td>750</td>
+  <td>投げ当てた敵の存在を封じる</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>店</td>
+  <td>　</td>
+    </tr><tr>
+  <td align="center">しきべつのまきもの</td>
+  <td>300</td>
+  <td>150</td>
+  <td>アイテムを識別できる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">じばくのまきもの</td>
+  <td>500</td>
+  <td>100</td>
+  <td>大爆発を起こす、ＨＰが１になる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">しんくうぎりのまきもの</td>
+  <td>1000</td>
+  <td>500</td>
+  <td>周囲の敵にダメージ</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">すいだしのまきもの</td>
+  <td>1500</td>
+  <td>750</td>
+  <td>壺の中身を取り出す</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">ちのめぐみのまきもの</td>
+  <td>800</td>
+  <td>400</td>
+  <td>盾の強さを１上げる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">つぼぞうだいのまきもの</td>
+  <td>1000</td>
+  <td>500</td>
+  <td>壺の容量が１増える</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">てきばいそくのまきもの</td>
+  <td>100</td>
+  <td>50</td>
+  <td>敵の速度が２倍になる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">てんのめぐみのまきもの</td>
+  <td>800</td>
+  <td>400</td>
+  <td>剣の強さを１上げる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">バクスイのまきもの</td>
+  <td>200</td>
+  <td>100</td>
+  <td>敵を眠らせる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">パワーアップのまきもの</td>
+  <td>1000</td>
+  <td>100</td>
+  <td>攻撃力が１．５倍になる</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">ひきあげのまきもの</td>
+  <td>1000</td>
+  <td>500</td>
+  <td>装備品とともに月影村に戻る</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>○</td>
+  <td>　</td>
+    </tr><tr>
+  <td align="center">ひろえずのまきもの</td>
+  <td>300</td>
+  <td>300</td>
+  <td>アイテムが拾えなくなる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">まいごのまきもの</td>
+  <td>200</td>
+  <td>100</td>
+  <td>憶えたマップを忘れてしまう</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">メッキのまきもの</td>
+  <td>1500</td>
+  <td>500</td>
+  <td>剣と盾をメッキする</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">モンスターハウスのまきもの</td>
+  <td>80</td>
+  <td>40</td>
+  <td nowrap="">部屋がモンスターハウスになる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>食料</span>
+<table class="itemlist" id="itemlist8">
+    <tbody><tr>
+  <th class="sticky" width="30%" align="center">アイテム</th>
+  <th class="sticky" align="center">価格</th>
+  <th class="sticky" align="center">売値</th>
+  <th class="sticky" align="center">効果</th>
+  <th class="sticky" width="1%" align="center">易</th>
+  <th class="sticky" width="1%" align="center">普</th>
+  <th class="sticky" width="1%" align="center">難</th>
+  <th class="sticky" width="1%" align="center">も</th>
+    </tr><tr>
+  <td align="center">おにぎり</td>
+  <td>100</td>
+  <td>25</td>
+  <td>満腹度が５０%プラスになる</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">おおきいおにぎり</td>
+  <td>200</td>
+  <td>50</td>
+  <td>満腹度が１００%プラスになる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">きょだいなおにぎり</td>
+  <td>300</td>
+  <td>75</td>
+  <td>満腹になり、最大満腹度が５%上がる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>店</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">くさったおにぎり</td>
+  <td>100</td>
+  <td>25</td>
+  <td>満腹度が３０%プラス、弊害あり</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">たまご</td>
+  <td>50</td>
+  <td>10</td>
+  <td>満腹度が３０%、他にも特殊効果がつく</td>
+  <td>　</td>
+  <td>店</td>
+  <td>店</td>
+  <td>店</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>腕輪</span>
+<table class="itemlist" id="itemlist9">
+    <tbody><tr>
+  <th class="sticky" width="30%" align="center">アイテム</th>
+  <th class="sticky" align="center">価格</th>
+  <th class="sticky" align="center">売値</th>
+  <th class="sticky" align="center">効果</th>
+  <th class="sticky" width="1%" align="center">易</th>
+  <th class="sticky" width="1%" align="center">普</th>
+  <th class="sticky" width="1%" align="center">難</th>
+  <th class="sticky" width="1%" align="center">も</th>
+    </tr><tr>
+  <td align="center">えんとうのうでわ</td>
+  <td>1200</td>
+  <td>600</td>
+  <td>アイテムを投げると貫通して飛んでいく</td>
+  <td>　</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">かいしんのうでわ</td>
+  <td>10000</td>
+  <td>5000</td>
+  <td>会心の一撃がでる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>店</td>
+  <td></td>
+    </tr><tr>
+  <td align="center">かいふくのうでわ</td>
+  <td>5000</td>
+  <td>2500</td>
+  <td>HPが５ずつ回復する、ハラヘリは2倍になる</td>
+  <td>○</td>
+  <td>店</td>
+  <td>店</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">こんらんよけのうでわ</td>
+  <td>2400</td>
+  <td>1200</td>
+  <td>混乱しなくなる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">サビよけのうでわ</td>
+  <td>2400</td>
+  <td>1200</td>
+  <td>装備が錆びない</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">しあわせのうでわ</td>
+  <td>10000</td>
+  <td>5000</td>
+  <td>もらえる経験値が少し増える</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>店</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">しきべつのうでわ</td>
+  <td>30000</td>
+  <td>15000</td>
+  <td>アイテムを拾っただけで識別できる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>店</td>
+    </tr><tr>
+  <td align="center">たれながしのうでわ</td>
+  <td>3600</td>
+  <td>1800</td>
+  <td>歩いているとアイテムをランダムに落としてしまう</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">つうかのうでわ</td>
+  <td>2400</td>
+  <td>1200</td>
+  <td>障害物や水脈の上を歩ける</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">つうこんのうでわ</td>
+  <td>10000</td>
+  <td>5000</td>
+  <td>痛恨の一撃を受けやすくなる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">とうしのうでわ</td>
+  <td>3600</td>
+  <td>1800</td>
+  <td>敵やアイテムの位置がわかる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>◎</td>
+  <td>◎</td>
+    </tr><tr>
+  <td align="center">ねぎりのうでわ</td>
+  <td>10000</td>
+  <td>5000</td>
+  <td>買物時に店主に「いいえ」と答えると、半額に値切ることができる</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">のろいよけのうでわ</td>
+  <td>2400</td>
+  <td>1200</td>
+  <td>呪い攻撃を防ぐ</td>
+  <td>　</td>
+  <td>　</td>
+  <td>　</td>
+  <td>○</td>
+    </tr><tr>
+  <td align="center">ハラヘラズのうでわ</td>
+  <td>15000</td>
+  <td>5000</td>
+  <td>満腹度が減らなくなる</td>
+  <td>○</td>
+  <td>◎</td>
+  <td>店</td>
+  <td>　</td>
+    </tr><tr>
+  <td align="center">ハラヘリのうでわ</td>
+  <td>15000</td>
+  <td>5000</td>
+  <td>満腹度の減り方ががいつもの2倍</td>
+  <td>　</td>
+  <td>　</td>
+  <td>店</td>
+  <td>店</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>モンスター</span>
+<br>
+※目…ひとつめゴロシが効く。<br>
+※霊…じょうぶつのカマが効く。<br>
+※吸…ドレインバスターが効く。<br>
+※盗…トドのたてで特殊攻撃を防げる。<br>
+※魔…やまびこのたてで特殊攻撃を防げる。<p></p>
+
+<table id="monsters">
+    <tbody><tr>
+  <th colspan="2" align="center" class="sticky" >系</th>
+  <th align="center" class="sticky" >モンスター</th>
+  <th align="center" class="sticky" >属</th>
+  <th align="center" class="sticky" >ＨＰ</th>
+  <th align="center" class="sticky" >ＥＸＰ</th>
+  <th align="center" class="sticky" >特徴</th>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td width="20%" align="center">アイアンヘッド</td>
+  <td>目</td>
+  <td>60</td>
+  <td>400</td>
+  <td>-</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">チェインヘッド</td>
+  <td>目</td>
+  <td>70</td>
+  <td>1200</td>
+  <td>-</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">ギガヘッド</td>
+  <td>目</td>
+  <td>100</td>
+  <td>2000</td>
+  <td>-</td>
+    </tr><tr>
+  <td>ＬＶ</td>
+  <td>１</td>
+  <td align="center">いやしウサギ</td>
+  <td>－</td>
+  <td>20</td>
+  <td>90</td>
+  <td>フロアにＨＰが減っているモンスターを見つけると、<br>
+  隣にワープしてきてそのモンスターを回復させる。</td>
+    </tr><tr>
+  <td>ＬＶ</td>
+  <td>１</td>
+  <td align="center">エーテルもどき</td>
+  <td>霊</td>
+  <td>50</td>
+  <td>80</td>
+  <td>フラフラと移動する。<br>
+  ＳＦＣのように杖の効果を弾き返したりはしない</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">おばけだいこん</td>
+  <td>霊</td>
+  <td>20</td>
+  <td>20</td>
+  <td>シレンが一定の距離＆直線状にいると、「どくそう」を投げてくる。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">めまわしだいこん</td>
+  <td>霊</td>
+  <td>50</td>
+  <td>65</td>
+  <td>シレンが一定の距離にいると角度を問わず、<br>
+  「こんらんそう」を投げてくる。</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">ねむりだいこん</td>
+  <td>霊</td>
+  <td>50</td>
+  <td>120</td>
+  <td>シレンが一定の距離にいると角度を問わず、<br>
+  「すいみんそう」を投げてくる。</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">かさタヌキ</td>
+  <td>－</td>
+  <td>10</td>
+  <td>6</td>
+  <td>店内でアイテムや階段に化けている。<br>
+  シレンが拾おうとすると、正体を現し、攻撃してくる。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">からかさタヌキ</td>
+  <td>－</td>
+  <td>10</td>
+  <td>60</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">たんたんタヌキ</td>
+  <td>－</td>
+  <td>10</td>
+  <td>600</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">かっとびイノシシ</td>
+  <td>－</td>
+  <td>20</td>
+  <td>18</td>
+  <td>転ばせて、所持アイテムをシレンの後方にばらまかせる。ダメージはない。<br>
+  壁を背にするとばらまかずに済む。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">げきとつシシ</td>
+  <td>－</td>
+  <td>60</td>
+  <td>350</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">かいめつイノシシ</td>
+  <td>－</td>
+  <td>80</td>
+  <td>1500</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">ガマラ</td>
+  <td>盗</td>
+  <td>14</td>
+  <td>5</td>
+  <td>落ちているギタンやシレンのギタンを盗む。<br>
+  盗んだ後はワープして、2倍速で逃げる。<br>
+  倒すと必ずギタンを落とす。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">ガマグッチ</td>
+  <td>盗</td>
+  <td>30</td>
+  <td>50</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">ガマゴン</td>
+  <td>盗</td>
+  <td>50</td>
+  <td>400</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">カラカイおさる</td>
+  <td>－</td>
+  <td>6</td>
+  <td>3</td>
+  <td>-</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">チャカシおさる</td>
+  <td>－</td>
+  <td>6</td>
+  <td>3</td>
+  <td>-</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">ミクダシおさる</td>
+  <td>－</td>
+  <td>50</td>
+  <td>170</td>
+  <td>-</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">カラスてんぐ</td>
+  <td>－</td>
+  <td>10</td>
+  <td>25</td>
+  <td>フロア内の他の敵（ＬＶ１）の姿に化ける。<br>
+  ただし変わるのは姿だけ、能力は変わらない。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">ハヤブサてんぐ</td>
+  <td>－</td>
+  <td>10</td>
+  <td>100</td>
+  <td>フロア内の他の敵（ＬＶ２）の姿に化ける。<br>
+  ただし変わるのは姿だけ、能力は変わらない。</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">イヌワシてんぐ</td>
+  <td>－</td>
+  <td>60</td>
+  <td>300</td>
+  <td>フロア内の他の敵（ＬＶ３）の姿に化ける。<br>
+  ただし変わるのは姿だけ、能力は変わらない。</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">きめんむしゃ</td>
+  <td>－</td>
+  <td>36</td>
+  <td>40</td>
+  <td>倒れた4ターン後、その場所に亡霊武者が出現する。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">はんにゃむしゃ</td>
+  <td>－</td>
+  <td>40</td>
+  <td>50</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">しょうぐん</td>
+  <td>－</td>
+  <td>55</td>
+  <td>500</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td>ＬＶ</td>
+  <td>１</td>
+  <td align="center">ぼうれいむしゃ</td>
+  <td>霊</td>
+  <td>4</td>
+  <td>10</td>
+  <td>他のモンスターに乗り移り、レベルを上げる。<br>
+  通常攻撃では１ダメージしか与えられない。</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">ギャザー</td>
+  <td>－</td>
+  <td>35</td>
+  <td>50</td>
+  <td>-</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">キラーギャザー</td>
+  <td>－</td>
+  <td>60</td>
+  <td>600</td>
+  <td>-</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">ヘルギャザー</td>
+  <td>－</td>
+  <td>63</td>
+  <td>1600</td>
+  <td>-</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">きりせんにん</td>
+  <td>魔</td>
+  <td>40</td>
+  <td>100</td>
+  <td>シレンが隣にいると、20ターンの間体力が回復しなくなる魔法をかけてくる。<br>
+  この魔法は2度目以降かけられると、ＨＰが減少していく。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">みのせんにん</td>
+  <td>魔</td>
+  <td>65</td>
+  <td>540</td>
+  <td>シレンが部屋の直線状にいると、30ターンの間体力が回復しなくなる魔法をかけてくる。<br>
+  この魔法は2度目以降かけられると、ＨＰが減少していく。</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">かすみせんにん</td>
+  <td>魔</td>
+  <td>90</td>
+  <td>1000</td>
+  <td>シレンが同じ部屋にいると角度を問わず、40ターンの間体力が回復しなくなる魔法をかけてくる。<br>
+  この魔法は2度目以降かけられると、ＨＰが減少していく。</td>
+    </tr><tr>
+  <td>ＬＶ</td>
+  <td>１</td>
+  <td align="center">くねくねハニー</td>
+  <td>吸</td>
+  <td>40</td>
+  <td>30</td>
+  <td>シレンのレベルを1下げる</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">ゲイズ</td>
+  <td>目<br>
+  魔</td>
+  <td>50</td>
+  <td>230</td>
+  <td>シレンが隣にいると、催眠術をかけて勝手に所持アイテムを装備・使用させる。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">スーパーゲイズ</td>
+  <td>目<br>
+  魔</td>
+  <td>60</td>
+  <td>800</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">ハイパーゲイズ</td>
+  <td>目<br>
+  魔</td>
+  <td>75</td>
+  <td>1700</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">しのつかい</td>
+  <td>霊</td>
+  <td>60</td>
+  <td>300</td>
+  <td>２倍速で移動する。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">じごくのししゃ</td>
+  <td>霊</td>
+  <td>60</td>
+  <td>400</td>
+  <td>２倍速で移動し、２回攻撃する。</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">しにがみ</td>
+  <td>霊</td>
+  <td>70</td>
+  <td>1150</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">シューベル</td>
+  <td>－</td>
+  <td>28</td>
+  <td>25</td>
+  <td>シレンが隣にいると、ＬＶ１のモンスターを一体呼び出す。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">メンベルス</td>
+  <td>－</td>
+  <td>40</td>
+  <td>300</td>
+  <td>シレンが隣にいると、ＬＶ２のモンスターを一体呼び出す。</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">ベルトーベン</td>
+  <td>－</td>
+  <td>70</td>
+  <td>1000</td>
+  <td>シレンが隣にいると、ＬＶ３のモンスターを２～３匹呼び出す。</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">すすりムシ</td>
+  <td>目<br>
+  吸</td>
+  <td>30</td>
+  <td>15</td>
+  <td>シレンが隣にいると、力の最大値を1下げてくる。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">きゅういんちゅう</td>
+  <td>目<br>
+  吸</td>
+  <td>55</td>
+  <td>740</td>
+  <td>シレンが隣にいると、力の最大値を2下げてくる。</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">がぶのみムシ</td>
+  <td>目<br>
+  吸</td>
+  <td>55</td>
+  <td>800</td>
+  <td>シレンが隣にいると、力の最大値を3下げてくる。</td>
+    </tr><tr>
+  <td rowspan="3">ＬＶ</td>
+  <td>１</td>
+  <td align="center">セルアーマー</td>
+  <td>霊</td>
+  <td>35</td>
+  <td>45</td>
+  <td>シレンが隣にいると、装備している盾をはじきとばしてくる。</td>
+    </tr><tr>
+  <td>２</td>
+  <td align="center">クロムアーマー</td>
+  <td>霊</td>
+  <td>50</td>
+  <td>450</td>
+  <td>シレンが隣にいると、装備している剣、もしくは盾をはじきとばしてくる。</td>
+    </tr><tr>
+  <td>３</td>
+  <td align="center">チタンアーマー</td>
+  <td>霊</td>
+  <td>80</td>
+  <td>1200</td>
+  <td>シレンが隣にいると、装備している剣・盾・腕輪のどれか1つをはじきとばしてくる</td>
+    </tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td width="20%" align="center">タウロス</td>
+  <td>－</td>
+  <td>55</td>
+  <td>350</td>
+  <td>時おり痛恨の一撃を出して、通常の2倍のダメージを与えてくる。<br>
+  倒すとミノタウロスの斧を落とすことがある。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ミノタウロス</td>
+  <td>－</td>
+  <td>67</td>
+  <td>800</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">メガタウロス</td>
+  <td>－</td>
+  <td>100</td>
+  <td>1200</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">チキン</td>
+  <td>－</td>
+  <td>4</td>
+  <td>100</td>
+  <td>2倍速で、シレンから逃げる</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">マスターチキン</td>
+  <td>－</td>
+  <td>55</td>
+  <td>270</td>
+  <td>ＨＰが約５分の１になると、チキンに変身する。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">グレードチキン</td>
+  <td>－</td>
+  <td>70</td>
+  <td>1000</td>
+  <td>２倍速移動・２回攻撃する。</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ちょうちんフグ</td>
+  <td>吸</td>
+  <td>15</td>
+  <td>35</td>
+  <td>現在の満腹度を１０％下げてくる。<br>
+  普段は眠っているが、倒すとアイテムを落としやすい。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">あんどんフグ</td>
+  <td>吸</td>
+  <td>55</td>
+  <td>400</td>
+  <td>現在の満腹度を３０％下げてくる。<br>
+  普段は眠っているが、倒すとアイテムを落としやすい。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">かんてらフグ</td>
+  <td>吸</td>
+  <td>80</td>
+  <td>600</td>
+  <td>最大満腹度を１０％下げてくる。<br>
+  普段は眠っているが、倒すとアイテムを落としやすい。</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">チンタラ</td>
+  <td>－</td>
+  <td>6</td>
+  <td>4</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ちゅうチンタラ</td>
+  <td>－</td>
+  <td>30</td>
+  <td>25</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">おおチンタラ</td>
+  <td>－</td>
+  <td>50</td>
+  <td>150</td>
+  <td>-</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">デブータ</td>
+  <td>－</td>
+  <td>15</td>
+  <td>10</td>
+  <td>角度を問わず、シレンが２マス以内にくると石を投げてくる。<br>
+  石は山なりに飛び、壁もモンスターも関係なく必ず当たる。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">デブーチョ</td>
+  <td>－</td>
+  <td>50</td>
+  <td>200</td>
+  <td>角度を問わず、シレンが５マス以内にくると石を投げてくる。<br>
+  石は山なりに飛び、壁もモンスターも関係なく必ず当たる。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">デブートン</td>
+  <td>－</td>
+  <td>70</td>
+  <td>1000</td>
+  <td>角度を問わず、シレンが１０マス以内にくると石を投げてくる。<br>
+  石は山なりに飛び、壁もモンスターも関係なく必ず当たる。</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">とおせんりゅう</td>
+  <td>竜</td>
+  <td>40</td>
+  <td>55</td>
+  <td>自分の後ろにモンスターがいるとき、シレンの下に潜り、はさみうちにするよう背後に回り込んでくる。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ドラゴンヘッド</td>
+  <td>竜</td>
+  <td>45</td>
+  <td>200</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">スルードラゴン</td>
+  <td>竜</td>
+  <td>80</td>
+  <td>1200</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">にぎりへんげ</td>
+  <td>－</td>
+  <td>30</td>
+  <td>20</td>
+  <td>シレンの所持アイテムを1つ「大きいおにぎり」に変化させる。<br>
+  おにぎりを投げつけると大ダメージを与えられる。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">にぎりおやかた</td>
+  <td>－</td>
+  <td>60</td>
+  <td>75</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">にぎりもとじめ</td>
+  <td>－</td>
+  <td>50</td>
+  <td>200</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">にらみヘビ</td>
+  <td>竜</td>
+  <td>30</td>
+  <td>40</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ぎょろつきヘビ</td>
+  <td>竜</td>
+  <td>80</td>
+  <td>1000</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">がんだれヘビ</td>
+  <td>竜</td>
+  <td>85</td>
+  <td>1500</td>
+  <td>-</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ぬすっトド</td>
+  <td>盗</td>
+  <td>25</td>
+  <td>10</td>
+  <td>落ちているアイテムやシレンのアイテムを盗む。<br>
+  盗んだ後はワープして逃げる。<br>
+  倒すと必ずアイテムを落とす。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">みどりトド</td>
+  <td>盗</td>
+  <td>40</td>
+  <td>100</td>
+  <td>上と同じ能力を持ち、攻撃するとまれに分裂する。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">アイアントド</td>
+  <td>盗</td>
+  <td>70</td>
+  <td>250</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ネズミこぶん</td>
+  <td>－</td>
+  <td>6</td>
+  <td>3</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ネズミおやぶん</td>
+  <td>－</td>
+  <td>6</td>
+  <td>3</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">ネズミくろまく</td>
+  <td>－</td>
+  <td>36</td>
+  <td>40</td>
+  <td>-</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ノロージョ</td>
+  <td>－</td>
+  <td>33</td>
+  <td>35</td>
+  <td>シレンが隣にくると、装備している盾に呪いをかける。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ノロージョのあね</td>
+  <td>－</td>
+  <td>65</td>
+  <td>100</td>
+  <td>シレンが隣にくると、装備している剣・盾・腕輪に呪いをかける。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">ノロージョのはは</td>
+  <td>－</td>
+  <td>75</td>
+  <td>500</td>
+  <td>シレンが隣にくると、装備しているものを含めて装備アイテム全てに呪いをかける。</td>
+    </tr><tr>
+  <td>ＬＶ</td>
+  <td>1</td>
+  <td align="center">ばくだんウニ</td>
+  <td>目</td>
+  <td>60</td>
+  <td>50</td>
+  <td>ＨＰが約２分の１になると、行動しなくなる。<br>
+  ＨＰが約６分の１になると、大型地雷と同じ爆発を起こす。</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">パコレプキン</td>
+  <td>霊</td>
+  <td>30</td>
+  <td>35</td>
+  <td>壁の中も自由に移動する。<br>
+  フラフラした動きをする。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">パコレプキーナ</td>
+  <td>霊</td>
+  <td>60</td>
+  <td>500</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">パコレプキング</td>
+  <td>霊</td>
+  <td>65</td>
+  <td>1500</td>
+  <td>上と同じ</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ぴーたん</td>
+  <td>目</td>
+  <td>5</td>
+  <td>7</td>
+  <td>シレンから逃げるように２倍速で移動する。倒すと必ず「おにぎり」を落とす。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">にげぴーたん</td>
+  <td>目</td>
+  <td>5</td>
+  <td>25</td>
+  <td>シレンから逃げるように２倍速で移動し、攻撃するとワープする。<br>
+  倒すと必ず「おおきいおにぎり」を落とす。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">とびぴーたん</td>
+  <td>目</td>
+  <td>10</td>
+  <td>40</td>
+  <td>シレンから逃げるように２倍速で移動し、近づくとワープする。<br>
+  倒すと必ずアイテムを落とす。</td>
+    </tr><tr>
+  <td rowspan="7">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ボウヤー</td>
+  <td>－</td>
+  <td>7</td>
+  <td>7</td>
+  <td>シレンが直線状にいると、木の矢を撃ってくる。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">クロスボウヤー</td>
+  <td>－</td>
+  <td>20</td>
+  <td>20</td>
+  <td>シレンが直線状にいると、鉄の矢を撃ってくる。</td>
+    </tr><tr>
+  <td width="4">1</td>
+  <td align="center">コドモせんしゃ</td>
+  <td>－</td>
+  <td>25</td>
+  <td>40</td>
+  <td>２倍速で移動する。直線状にいると、シレンに鉄の矢を撃ってくる。<br>
+  シレン周囲３マス以内に近づこうとしない。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ちびタンク</td>
+  <td>－</td>
+  <td>25</td>
+  <td>135</td>
+  <td>２倍速で移動する。直線状にいると、シレンに銀の矢を撃ってくる。<br>
+  シレン周囲３マス以内に近づこうとしない。</td>
+    </tr><tr>
+  <td width="4">1</td>
+  <td align="center">オヤジせんしゃ</td>
+  <td>－</td>
+  <td>22</td>
+  <td>25</td>
+  <td>鈍足で行動する。<br>
+  １０ダメージの大砲を撃ってくる。爆風（周囲８マス）にもダメージがある。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ガンコせんしゃ</td>
+  <td>－</td>
+  <td>40</td>
+  <td>300</td>
+  <td>１５ダメージの大砲を撃ってくる。爆風（周囲８マス）にもダメージがある。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">イッテツせんしゃ</td>
+  <td>－</td>
+  <td>65</td>
+  <td>450</td>
+  <td>２倍速で行動する。<br>
+  ２０ダメージの大砲を撃ってくる。爆風（周囲８マス）にもダメージがある。</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">マムル</td>
+  <td>－</td>
+  <td>5</td>
+  <td>2</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">あなぐらマムル</td>
+  <td>－</td>
+  <td>6</td>
+  <td>4</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">どうくつマムル</td>
+  <td>－</td>
+  <td>5</td>
+  <td>1000</td>
+  <td>攻撃力と防御力がかなり高い。</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ミドロ</td>
+  <td>吸</td>
+  <td>40</td>
+  <td>20</td>
+  <td>シレンが装備している武器・盾をサビさせる。</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ゲドロ</td>
+  <td>吸</td>
+  <td>55</td>
+  <td>50</td>
+  <td>シレンが装備している武器・盾をサビさせる。<br>
+  ダメージを与えると、たまに分裂する。</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">オドロ</td>
+  <td>吸</td>
+  <td>80</td>
+  <td>200</td>
+  <td>シレンが装備している武器・盾をサビさせるだけでなく、合成能力を解いてしまう。<br>
+  ダメージを与えると、たまに分裂する。</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">モラビー</td>
+  <td>－</td>
+  <td>8</td>
+  <td>8</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">ワラビー</td>
+  <td>－</td>
+  <td>9</td>
+  <td>9</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">タカビー</td>
+  <td>－</td>
+  <td>50</td>
+  <td>80</td>
+  <td>-</td>
+    </tr><tr>
+  <td rowspan="3" width="20">ＬＶ</td>
+  <td width="4">1</td>
+  <td align="center">ヤミウッチー</td>
+  <td>－</td>
+  <td>15</td>
+  <td>15</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">2</td>
+  <td align="center">フイウッチー</td>
+  <td>－</td>
+  <td>65</td>
+  <td>600</td>
+  <td>-</td>
+    </tr><tr>
+  <td width="4">3</td>
+  <td align="center">ダマシウッチー</td>
+  <td>－</td>
+  <td>72</td>
+  <td>1350</td>
+  <td>-</td>
+    </tr><tr>
+  <td>ＬＶ</td>
+  <td>1</td>
+  <td align="center">オロチ（量産型）</td>
+  <td>竜</td>
+  <td>150</td>
+  <td>2500</td>
+  <td>シレンが直線上にいるとき、ダメージ30の炎を吐いてくる。<br>
+  炎ダメージはドラゴンシールドで半減できる。</td>
+    </tr><tr>
+  <td>ＬＶ</td>
+  <td>1</td>
+  <td align="center">オロチ（ラスボス）</td>
+  <td>竜</td>
+  <td>220</td>
+  <td>0</td>
+  <td>シレンが直線上にいるとき、ダメージ30の炎を吐いてくる。<br>炎ダメージはドラゴンシールドで半減できる。</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+<span>杖の価格表</span>
+<p></p>
+販売価格
+<table>
+    <tbody id="tue1"><tr>
+  <th class="sticky" align="center" width="20%">杖/回数</th>
+  <th class="sticky" align="center">１</th>
+  <th class="sticky" align="center">２</th>
+  <th class="sticky" align="center">３</th>
+  <th class="sticky" align="center">４</th>
+  <th class="sticky" align="center">５</th>
+  <th class="sticky" align="center">６</th>
+  <th class="sticky" align="center">７</th>
+  <th class="sticky" align="center">８</th>
+  <th class="sticky" align="center">９</th>
+  <th class="sticky" align="center">１０</th>
+    </tr><tr>
+  <td align="center">いたみわけ</td>
+  <td>1100</td>
+  <td>1200</td>
+  <td>1300</td>
+  <td>1400</td>
+  <td>1500</td>
+  <td>1600</td>
+  <td>1700</td>
+  <td>1800</td>
+  <td>1900</td>
+  <td>2000</td>
+    </tr><tr>
+  <td align="center">いちじしのぎ</td>
+  <td>750</td>
+  <td>800</td>
+  <td>850</td>
+  <td>900</td>
+  <td>950</td>
+  <td>1000</td>
+  <td>1050</td>
+  <td>1100</td>
+  <td>1150</td>
+  <td>1200</td>
+    </tr><tr>
+  <td align="center">かなしばり</td>
+  <td>750</td>
+  <td>800</td>
+  <td>850</td>
+  <td>900</td>
+  <td>950</td>
+  <td>1000</td>
+  <td>1050</td>
+  <td>1100</td>
+  <td>1150</td>
+  <td>1200</td>
+    </tr><tr>
+  <td align="center">ばしょがえ</td>
+  <td>650</td>
+  <td>700</td>
+  <td>750</td>
+  <td>800</td>
+  <td>850</td>
+  <td>900</td>
+  <td>950</td>
+  <td>1000</td>
+  <td>1050</td>
+  <td>1100</td>
+    </tr><tr>
+  <td align="center">ふきとばし</td>
+  <td>650</td>
+  <td>700</td>
+  <td>750</td>
+  <td>800</td>
+  <td>850</td>
+  <td>900</td>
+  <td>950</td>
+  <td>1000</td>
+  <td>1050</td>
+  <td>1100</td>
+    </tr><tr>
+  <td align="center">ふういん</td>
+  <td>1150</td>
+  <td>1300</td>
+  <td>1450</td>
+  <td>1600</td>
+  <td>1750</td>
+  <td>1900</td>
+  <td>2050</td>
+  <td>2200</td>
+  <td>2350</td>
+  <td>2500</td>
+    </tr><tr>
+  <td align="center">みがわり</td>
+  <td>1080</td>
+  <td>1160</td>
+  <td>1240</td>
+  <td>1320</td>
+  <td>1400</td>
+  <td>1480</td>
+  <td>1560</td>
+  <td>1640</td>
+  <td>1720</td>
+  <td>1800</td>
+    </tr><tr>
+  <td align="center">まどう</td>
+  <td class="mergetd" colspan="10">500</td>
+    </tr><tr>
+  <td align="center">しあわせ</td>
+  <td>840</td>
+  <td>880</td>
+  <td>920</td>
+  <td>960</td>
+  <td>1000</td>
+  <td>1040</td>
+  <td>1080</td>
+  <td>1120</td>
+  <td>1160</td>
+  <td>1200</td>
+    </tr><tr>
+  <td align="center">ふこう</td>
+  <td>840</td>
+  <td>880</td>
+  <td>920</td>
+  <td>960</td>
+  <td>1000</td>
+  <td>1040</td>
+  <td>1080</td>
+  <td>1120</td>
+  <td>1160</td>
+  <td>1200</td>
+    </tr>
+
+  </tbody>
+</table>
+  <p></p>
+  買取価格
+  <table>
+    <tbody id="tue2"><tr>
+  <th class="sticky" align="center" width="20%">杖/回数</th>
+  <th class="sticky" align="center">１</th>
+  <th class="sticky" align="center">２</th>
+  <th class="sticky" align="center">３</th>
+  <th class="sticky" align="center">４</th>
+  <th class="sticky" align="center">５</th>
+  <th class="sticky" align="center">６</th>
+  <th class="sticky" align="center">７</th>
+  <th class="sticky" align="center">８</th>
+  <th class="sticky" align="center">９</th>
+  <th class="sticky" align="center">１０</th>
+    </tr><tr>
+  <td align="center">いたみわけ</td>
+  <td>400</td>
+  <td>450</td>
+  <td>500</td>
+  <td>550</td>
+  <td>600</td>
+  <td>650</td>
+  <td>700</td>
+  <td>750</td>
+  <td>800</td>
+  <td>850</td>
+    </tr><tr>
+  <td align="center">いちじしのぎ</td>
+  <td>375</td>
+  <td>400</td>
+  <td>425</td>
+  <td>450</td>
+  <td>475</td>
+  <td>500</td>
+  <td>525</td>
+  <td>550</td>
+  <td>575</td>
+  <td>600</td>
+    </tr><tr>
+  <td align="center">かなしばり</td>
+  <td>375</td>
+  <td>400</td>
+  <td>425</td>
+  <td>450</td>
+  <td>475</td>
+  <td>500</td>
+  <td>525</td>
+  <td>550</td>
+  <td>575</td>
+  <td>600</td>
+    </tr><tr>
+  <td align="center">ばしょがえ</td>
+  <td>325</td>
+  <td>350</td>
+  <td>375</td>
+  <td>400</td>
+  <td>425</td>
+  <td>450</td>
+  <td>475</td>
+  <td>500</td>
+  <td>525</td>
+  <td>550</td>
+    </tr><tr>
+  <td align="center">ふきとばし</td>
+  <td>325</td>
+  <td>350</td>
+  <td>375</td>
+  <td>400</td>
+  <td>425</td>
+  <td>450</td>
+  <td>475</td>
+  <td>500</td>
+  <td>525</td>
+  <td>550</td>
+    </tr><tr>
+  <td align="center">ふういん</td>
+  <td>570</td>
+  <td>640</td>
+  <td>710</td>
+  <td>780</td>
+  <td>850</td>
+  <td>920</td>
+  <td>990</td>
+  <td>1060</td>
+  <td>1130</td>
+  <td>1200</td>
+    </tr><tr>
+  <td align="center">みがわり</td>
+  <td>540</td>
+  <td>580</td>
+  <td>620</td>
+  <td>660</td>
+  <td>700</td>
+  <td>740</td>
+  <td>780</td>
+  <td>820</td>
+  <td>860</td>
+  <td>900</td>
+    </tr><tr>
+  <td align="center">まどう</td>
+  <td colspan="10" class="mergetd">250</td>
+    </tr><tr>
+  <td align="center">しあわせ</td>
+  <td>420</td>
+  <td>440</td>
+  <td>460</td>
+  <td>480</td>
+  <td>500</td>
+  <td>520</td>
+  <td>540</td>
+  <td>560</td>
+  <td>580</td>
+  <td>600</td>
+    </tr><tr>
+  <td align="center">ふこう</td>
+  <td>420</td>
+  <td>440</td>
+  <td>460</td>
+  <td>480</td>
+  <td>500</td>
+  <td>520</td>
+  <td>540</td>
+  <td>560</td>
+  <td>580</td>
+  <td>600</td>
+    </tr>
+  </tbody>
+</table>
+<p></p>
+<span>壺の価格表</span>
+<p></p>
+販売価格
+<table>
+    <tbody id="tubo1"><tr>
+  <th class="sticky" align="center" width="20%">壷/回数</th>
+  <th class="sticky" align="center">１</th>
+  <th class="sticky" align="center">２</th>
+  <th class="sticky" align="center">３</th>
+  <th class="sticky" align="center">４</th>
+  <th class="sticky" align="center">５</th>
+  <th class="sticky" align="center">６</th>
+  <th class="sticky" align="center">７</th>
+  <th class="sticky" align="center">８</th>
+  <th class="sticky" align="center">９</th>
+  <th class="sticky" align="center">１０</th>
+    </tr><tr>
+  <td align="center">やりすごし</td>
+  <td class="mergetd" colspan="10">1000</td>
+    </tr><tr>
+  <td align="center">ほぞん</td>
+  <td class="mergetd" colspan="10">1600</td>
+    </tr><tr>
+  <td align="center">へんげ</td>
+  <td>1200</td>
+  <td>1300</td>
+  <td>1400</td>
+  <td>1500</td>
+  <td>1600</td>
+  <td>1700</td>
+  <td>1800</td>
+  <td>1900</td>
+  <td>2000</td>
+  <td>2100</td>
+    </tr><tr>
+  <td align="center">そうこ</td>
+  <td>2750</td>
+  <td>3000</td>
+  <td>3250</td>
+  <td>3500</td>
+  <td>3750</td>
+  <td>4000</td>
+  <td>4250</td>
+  <td>4500</td>
+  <td>4750</td>
+  <td>5000</td>
+    </tr><tr>
+  <td align="center">ごうせい</td>
+  <td>3350</td>
+  <td>3700</td>
+  <td>4050</td>
+  <td>4400</td>
+  <td>4750</td>
+  <td>5100</td>
+  <td>5450</td>
+  <td>5800</td>
+  <td>6150</td>
+  <td>6500</td>
+    </tr><tr>
+  <td align="center">せなか</td>
+  <td>1800</td>
+  <td>1950</td>
+  <td>2100</td>
+  <td>2250</td>
+  <td>2400</td>
+  <td>2550</td>
+  <td>2700</td>
+  <td>2850</td>
+  <td>3000</td>
+  <td>3150</td>
+    </tr><tr>
+  <td align="center">トド</td>
+  <td>1760</td>
+  <td>1920</td>
+  <td>2080</td>
+  <td>2240</td>
+  <td>2400</td>
+  <td>2560</td>
+  <td>2720</td>
+  <td>2880</td>
+  <td>3040</td>
+  <td>3200</td>
+    </tr><tr>
+  <td align="center">そこぬけ</td>
+  <td class="mergetd" colspan="10">2500</td>
+    </tr><tr>
+  <td align="center">じゃくか</td>
+  <td>1050</td>
+  <td>1100</td>
+  <td>1150</td>
+  <td>1200</td>
+  <td>1250</td>
+  <td>1300</td>
+  <td>1350</td>
+  <td>1400</td>
+  <td>1450</td>
+  <td>1500</td>
+    </tr><tr>
+  <td align="center">しきべつ</td>
+  <td>1100</td>
+  <td>1200</td>
+  <td>1300</td>
+  <td>1400</td>
+  <td>1500</td>
+  <td>1600</td>
+  <td>1700</td>
+  <td>1800</td>
+  <td>1900</td>
+  <td>2000</td>
+    </tr><tr>
+  <td align="center">ぶんれつ</td>
+  <td>8800</td>
+  <td>9600</td>
+  <td>10400</td>
+  <td>11200</td>
+  <td>12000</td>
+  <td>12800</td>
+  <td>13600</td>
+  <td>14400</td>
+  <td>15200</td>
+  <td>16000</td>
+    </tr><tr>
+  <td align="center">きょうか</td>
+  <td>11000</td>
+  <td>12000</td>
+  <td>13000</td>
+  <td>14000</td>
+  <td>15000</td>
+  <td>16000</td>
+  <td>17000</td>
+  <td>18000</td>
+  <td>19000</td>
+  <td>20000</td>
+    </tr><tr>
+  <td align="center">まもののルツボ</td>
+  <td>2100</td>
+  <td>2300</td>
+  <td>2500</td>
+  <td>2700</td>
+  <td>2900</td>
+  <td>3100</td>
+  <td>3300</td>
+  <td>3500</td>
+  <td>3700</td>
+  <td>3900</td>
+    </tr>
+
+  </tbody>
+</table>
+<p></p>
+買取価格
+<table>
+    <tbody id="tubo2"><tr>
+  <th class="sticky" align="center" width="20%">壷/回数</th>
+  <th class="sticky" align="center">１</th>
+  <th class="sticky" align="center">２</th>
+  <th class="sticky" align="center">３</th>
+  <th class="sticky" align="center">４</th>
+  <th class="sticky" align="center">５</th>
+  <th class="sticky" align="center">６</th>
+  <th class="sticky" align="center">７</th>
+  <th class="sticky" align="center">８</th>
+  <th class="sticky" align="center">９</th>
+  <th class="sticky" align="center">１０</th>
+    </tr><tr>
+  <td align="center">やりすごし</td>
+  <td class="mergetd" colspan="10">400</td>
+    </tr><tr>
+  <td align="center">ほぞん</td>
+  <td class="mergetd" colspan="10">800</td>
+    </tr><tr>
+  <td align="center">へんげ</td>
+  <td>550</td>
+  <td>600</td>
+  <td>650</td>
+  <td>700</td>
+  <td>750</td>
+  <td>800</td>
+  <td>850</td>
+  <td>900</td>
+  <td>950</td>
+  <td>1000</td>
+    </tr><tr>
+  <td align="center">そうこ</td>
+  <td>1320</td>
+  <td>1440</td>
+  <td>1560</td>
+  <td>1680</td>
+  <td>1800</td>
+  <td>1920</td>
+  <td>2040</td>
+  <td>2160</td>
+  <td>2280</td>
+  <td>2400</td>
+    </tr><tr>
+  <td align="center">ごうせい</td>
+  <td>1650</td>
+  <td>1800</td>
+  <td>1950</td>
+  <td>2100</td>
+  <td>2250</td>
+  <td>2400</td>
+  <td>2550</td>
+  <td>2700</td>
+  <td>2850</td>
+  <td>3000</td>
+    </tr><tr>
+  <td align="center">せなか</td>
+  <td>770</td>
+  <td>840</td>
+  <td>910</td>
+  <td>980</td>
+  <td>1050</td>
+  <td>1120</td>
+  <td>1190</td>
+  <td>1260</td>
+  <td>1330</td>
+  <td>1400</td>
+    </tr><tr>
+  <td align="center">トド</td>
+  <td>660</td>
+  <td>720</td>
+  <td>780</td>
+  <td>840</td>
+  <td>900</td>
+  <td>960</td>
+  <td>1020</td>
+  <td>1080</td>
+  <td>1140</td>
+  <td>1200</td>
+    </tr><tr>
+  <td align="center">そこぬけ</td>
+  <td class="mergetd" colspan="10">400</td>
+    </tr><tr>
+  <td align="center">じゃくか</td>
+  <td>220</td>
+  <td>240</td>
+  <td>260</td>
+  <td>280</td>
+  <td>300</td>
+  <td>320</td>
+  <td>340</td>
+  <td>360</td>
+  <td>380</td>
+  <td>400</td>
+    </tr><tr>
+  <td align="center">しきべつ</td>
+  <td>550</td>
+  <td>600</td>
+  <td>650</td>
+  <td>700</td>
+  <td>750</td>
+  <td>800</td>
+  <td>850</td>
+  <td>900</td>
+  <td>950</td>
+  <td>1000</td>
+    </tr><tr>
+  <td align="center">ぶんれつ</td>
+  <td>4400</td>
+  <td>4800</td>
+  <td>5200</td>
+  <td>5600</td>
+  <td>6000</td>
+  <td>6400</td>
+  <td>6800</td>
+  <td>7200</td>
+  <td>7600</td>
+  <td>8000</td>
+    </tr><tr>
+  <td align="center">きょうか</td>
+  <td>5500</td>
+  <td>6000</td>
+  <td>6500</td>
+  <td>7000</td>
+  <td>7500</td>
+  <td>8000</td>
+  <td>8500</td>
+  <td>9000</td>
+  <td>9500</td>
+  <td>10000</td>
+    </tr><tr>
+  <td align="center">まもののルツボ</td>
+  <td>330</td>
+  <td>360</td>
+  <td>390</td>
+  <td>420</td>
+  <td>450</td>
+  <td>480</td>
+  <td>510</td>
+  <td>540</td>
+  <td>570</td>
+  <td>600</td>
+    </tr>
+
+  </tbody></table>
+  <div id="footDiv">
+  </div>
+
+  <script type="text/javascript" src="shirengbsearch.js"></script>
+</body>
+<footer>
+</footer>
+</html>
