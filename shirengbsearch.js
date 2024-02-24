@@ -190,8 +190,8 @@ function searchItemName(str) {
                 const innerText = wanakana.toKatakana(list[ele].innerText);
                 if (regex.test(innerText)) {
                     tempstr += "<span class=itemlink id='itemLink" + itemLinkList.length + "' onclick='clickEventItemLink(this)'>"
-                    + ((key === "アイテム") ? "#" : "[" + list[ele].previousElementSibling.innerText + "]")
-                    + list[ele].innerText + "</span> ";
+                        + ((key === "アイテム") ? "#" : "[" + list[ele].previousElementSibling.innerText + "]")
+                        + list[ele].innerText + "</span> ";
                     itemLinkList.push(list[ele]);
                     focusTableBG(list[ele].parentElement);
                 }
